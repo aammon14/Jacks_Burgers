@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express();
-const usersModel = require("../../models/users.js");
+const usersModel = require("../models/users.js");
 
 router.get("/", usersModel.allUsers, (req, res, next) => {
     res.json(res.locals.allUsersData);

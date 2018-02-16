@@ -1,7 +1,7 @@
 const db = require("../db/setup.js");
 const itemsModel = {};
 
-itemsModel.allOrders = (req, res, next) => {
+itemsModel.allItems = (req, res, next) => {
     db
         .manyOrNone("SELECT * FROM items")
         .then(data => {
