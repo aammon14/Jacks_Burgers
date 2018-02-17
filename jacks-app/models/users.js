@@ -16,7 +16,7 @@ usersModel.allUsers = (req, res, next) => {
 
 usersModel.findById = (req, res, next) => {
     db
-        .one("SELECT * FROM users WHERE users.id = ${id}", { id: id })
+        .one("SELECT * FROM users WHERE id = $1", [req.params.id])
         .then(data => {
             res.locals.userData = data;
             next();
