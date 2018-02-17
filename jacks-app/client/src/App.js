@@ -90,7 +90,7 @@ class App extends Component {
 
   addItemToCart() {
     axios({
-      url: "",
+      url: "localhost:3000/items",
       method: "get"
     }).then(response => {});
   }
