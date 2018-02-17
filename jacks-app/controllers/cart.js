@@ -10,4 +10,8 @@ router.delete("/:id", cartModel.deleteItem, (req, res, next) => {
     res.json(res.locals.newOrderData);
 });
 
+router.put("/:id", cartModel.updateItem, (req, res, next) => {
+    res.json(res.locals.updatedCartData);
+});
+
 module.exports = router;

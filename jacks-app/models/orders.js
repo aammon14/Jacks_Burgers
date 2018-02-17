@@ -42,16 +42,4 @@ ordersModel.create = (req, res, next) => {
         });
 };
 
-ordersModel.deleteItem = (req, res, next) => {
-    db
-        .one("DELETE * FROM orders_items WHERE id = $1", [req.params.id])
-        .then(() => {
-            next();
-        })
-        .catch(error => {
-            console.log("error encountered in ordersModel.deleteItem:", error);
-            next(error);
-        });
-};
-
 module.exports = ordersModel;
