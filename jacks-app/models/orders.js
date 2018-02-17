@@ -16,7 +16,7 @@ ordersModel.allOrders = (req, res, next) => {
 
 ordersModel.findById = (req, res, next) => {
     db
-        .one("SELECT * FROM orders WHERE orders.id = ${id}", { id: id })
+        .one("SELECT * FROM orders WHERE id = $1", [req.params.id])
         .then(data => {
             res.locals.orderData = data;
             next();
