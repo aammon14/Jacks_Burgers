@@ -16,6 +16,9 @@ INSERT INTO items (category, name, price, description) VALUES
 ('Entree', 'Chicken fingers', 9.95, 'Worlds best chicken fingers'),
 ('Entree', 'Chicken Noodle Soup', 9.95, 'Worlds best chicken noodle soup');
 
-
+INSERT INTO orders_items (items_id, user_id, comment) VALUES
+(1, 1, 'no ketchup plz'),
+(2, 1, 'no comment'),
+(3, 1, 'extra sauce');
 
 
