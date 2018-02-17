@@ -21,13 +21,15 @@ CREATE TABLE items (
 CREATE TABLE orders (
     id BIGSERIAL PRIMARY KEY,
     user_id SERIAL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    completed VARCHAR
 );
 
 CREATE TABLE orders_items (
     items_id SERIAL,
     FOREIGN KEY (items_id) REFERENCES items(id),
     user_id SERIAL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    comment VARCHAR
 );
 
