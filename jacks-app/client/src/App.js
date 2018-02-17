@@ -26,6 +26,7 @@ class App extends Component {
 
     this.state = {
       user: "",
+      items: [],
       cart: [],
       hasData: false
     };
@@ -37,7 +38,12 @@ class App extends Component {
     axios({
       url: "localhost:3000/items",
       method: "get"
-    }).then(response => {});
+    }).then(response => {
+      this.setState({
+        items: response.data,
+        hasData: true
+      });
+    });
   }
 
   getItem() {
@@ -118,6 +124,10 @@ class App extends Component {
     }).then(response => {});
   }
 
+  componentDidMount() {
+    this.getAllItems();
+  }
+
   render() {
     return (
       <div className="App">
@@ -127,6 +137,7 @@ class App extends Component {
           getAllItems={this.getAllItems}
           getItem={this.getItem}
           addItemToCart={this.addItemToCart}
+          items={this.state.items}
         />
         <Categories />
         <Checkout getCart={this.getCart} createOrder={this.createOrder} />
