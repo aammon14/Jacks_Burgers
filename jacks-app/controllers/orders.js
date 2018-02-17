@@ -14,8 +14,4 @@ router.post("/", ordersModel.create, (req, res, next) => {
     res.json(res.locals.newOrderData);
 });
 
-router.delete("/:id", ordersModel.deleteItem, (req, res, next) => {
-    res.json(res.locals.newOrderData);
-});
-
 module.exports = router;
