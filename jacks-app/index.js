@@ -29,6 +29,9 @@ app.use("/orders", ordersRouter);
 const itemsRouter = require("./controllers/items.js");
 app.use("/items", itemsRouter);
 
+const cartRouter = require("./controllers/cart.js");
+app.use("/cart", cartRouter);
+
 app.use((err, req, res, next) => {
     console.log("Error encountered:", err);
     res.status(500);

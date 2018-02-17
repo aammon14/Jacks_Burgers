@@ -16,7 +16,7 @@ ordersModel.allOrders = (req, res, next) => {
 
 ordersModel.findById = (req, res, next) => {
     db
-        .one("SELECT * FROM orders WHERE orders.id = ${id}", { id: id })
+        .one("SELECT * FROM orders WHERE id = $1", [req.params.id])
         .then(data => {
             res.locals.orderData = data;
             next();
@@ -42,14 +42,14 @@ ordersModel.create = (req, res, next) => {
         });
 };
 
-ordersModel.destroy = (req, res, next) => {
+ordersModel.deleteItem = (req, res, next) => {
     db
-        .one("DELETE FROM orders WHERE id = $1", [req.params.id])
+        .one("DELETE * FROM orders_items WHERE id = $1", [req.params.id])
         .then(() => {
             next();
         })
         .catch(error => {
-            console.log("error encountered in ordersModel.destroy:", error);
+            console.log("error encountered in ordersModel.deleteItem:", error);
             next(error);
         });
 };
