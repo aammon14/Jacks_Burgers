@@ -42,14 +42,14 @@ ordersModel.create = (req, res, next) => {
         });
 };
 
-ordersModel.destroy = (req, res, next) => {
+ordersModel.deleteItem = (req, res, next) => {
     db
-        .one("DELETE FROM orders WHERE id = $1", [req.params.id])
+        .one("DELETE * FROM orders_items WHERE id = $1", [req.params.id])
         .then(() => {
             next();
         })
         .catch(error => {
-            console.log("error encountered in ordersModel.destroy:", error);
+            console.log("error encountered in ordersModel.deleteItem:", error);
             next(error);
         });
 };
