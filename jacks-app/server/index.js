@@ -3,6 +3,11 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const app = express();
 const PORT = process.env.PORT || 8080;
+const cors = require('cors');
+
+// enables cors
+app.use(cors());
+
 
 const mustacheExpress = require("mustache-express");
 
