@@ -29,11 +29,12 @@ ordersModel.findById = (req, res, next) => {
 
 ordersModel.create = (req, res, next) => {
     db
-        .one("INSERT INTO orders (user_id) VALUES ($1) RETURNING id;", [
-            req.body.user_id
+        .one("INSERT INTO orders (user_id) VALUES ($1) RETURNING *;", [
+            req.params.user_id
         ])
         .then(data => {
-            res.locals.newOrderId = data.id;
+            res.locals.newOrderId = data;
+            console.log(res.locals.newOrderId);
             next();
         })
         .catch(error => {

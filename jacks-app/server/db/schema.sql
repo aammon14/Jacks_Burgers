@@ -12,7 +12,7 @@ CREATE TABLE orders (
     id BIGSERIAL PRIMARY KEY,
     user_id SERIAL,
     FOREIGN KEY (user_id) REFERENCES users(id),
-    completed BOOLEAN NOT NULL
+    completed VARCHAR(255)
 );
 
 CREATE TABLE items (

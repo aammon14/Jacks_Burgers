@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Checkout from "./Components/Checkout";
-import EditOrder from "./Components/EditOrder";
+import EditItem from "./Components/EditItem";
 import Item from "./Components/Item";
 import Login from "./Components/Login";
 import Menu from "./Components/Menu";
@@ -27,16 +27,12 @@ class App extends Component {
     };
 
     this.getAllItems = this.getAllItems.bind(this);
-    // this.getItem = this.getItem.bind(this);
     this.getAllUser = this.getAllUser.bind(this);
     // this.createUser = this.createUser.bind(this);
     this.getAllOrders = this.getAllOrders.bind(this);
     // this.getOrder = this.getOrder.bind(this);
     // this.createOrder = this.createOrder.bind(this);
     // this.getCart = this.getCart.bind(this);
-    // this.addItemToCart = this.addItemToCart.bind(this);
-
-    
   }
 
   // Item Calls
@@ -45,19 +41,12 @@ class App extends Component {
     axios({
       url: "http://localhost:8080/items",
       method: "Get"
-    }).then(response => { 
-     console.log(
-        "In getAllItems received response from server. response.data:",
-        response.data
-      );
+    }).then(response => {
       this.setState({
-       
         items: response.data,
         hasData: true
       });
-
-    }); 
-
+    });
   }
 
   // User Calls
@@ -90,13 +79,6 @@ class App extends Component {
 
   // Checkout Cart Calls
 
-  addItemToCart() {
-    axios({
-      url: "http://localhost:8080/items",
-      method: "get"
-    }).then(response => {});
-  }
-
   getCart() {
     axios({
       url: "http://localhost:8080/cart",
@@ -123,7 +105,6 @@ class App extends Component {
   componentDidMount() {
     this.getAllItems();
     this.getAllOrders();
-    this.addItemToCart();
     this.getAllUser();
     this.getCart();
   }
@@ -156,6 +137,7 @@ class App extends Component {
                     {...props}
                     items={this.state.items}
                     getAllItems={this.getAllItems}
+                    addItemToCart={this.addItemToCart}
                   />
                 );
               }}
@@ -191,7 +173,7 @@ class App extends Component {
               path="/orders/:id/edit"
               render={props => {
                 return (
-                  <EditOrder
+                  <EditItem
                     {...props}
                     orders={this.state.orders}
                     getAllOrders={this.getAllItems}

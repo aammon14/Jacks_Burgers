@@ -10,8 +10,8 @@ router.get("/:id", ordersModel.findById, (req, res, next) => {
     res.json(res.locals.orderData);
 });
 
-router.post("/", ordersModel.create, (req, res, next) => {
-    res.json(res.locals.newOrderData);
+router.post("/:user_id", ordersModel.create, (req, res, next) => {
+    res.json(res.locals.newOrderId);
 });
 
 module.exports = router;

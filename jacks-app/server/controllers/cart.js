@@ -6,12 +6,16 @@ router.get("/", cartModel.getCart, (req, res, next) => {
     res.json(res.locals.cartData);
 });
 
-router.delete("/:id", cartModel.deleteItem, (req, res, next) => {
-    res.json(res.locals.newOrderData);
+router.post("/:id", cartModel.addItem, (req, res, next) => {
+    res.json(res.locals.itemAdded);
 });
 
 router.put("/:id", cartModel.updateItem, (req, res, next) => {
     res.json(res.locals.updatedCartData);
+});
+
+router.delete("/:id", cartModel.deleteItem, (req, res, next) => {
+    res.json(res.locals.itemDeleted);
 });
 
 module.exports = router;
