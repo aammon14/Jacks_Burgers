@@ -14,4 +14,7 @@ router.put("/:id", cartModel.updateItem, (req, res, next) => {
     res.json(res.locals.updatedCartData);
 });
 
+router.post("/", cartModel.getCart, (req, res, next) => {
+    res.json(res.locals.cartData);
+});
 module.exports = router;
