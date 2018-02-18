@@ -1,20 +1,28 @@
 import React, { Component } from "react";
-import Item from "./Item";
+import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
+
+
 
 class Menu extends Component {
     render() {
-        const items = this.props.items;
-
-        return items.map(data => {
-            return (
-                <div>
-                    <h1>{data.name}</h1>
-                    <p>{data.description}</p>
-                    <p>{data.price}</p>
-                </div>
-            );
-        });
-    }
+      return (
+        <div>
+        {this.props.items.map((el,i)=> {
+          return (
+            <div key={i}>
+             <Link to={`/items/${el.id}`}>
+              <h1>{el.name}</h1>
+               </Link>
+              <p>{el.description}</p>
+              <p>{el.price}</p>
+           </div>
+          );
+        })
+      } 
+    </div>
+  );
 }
+}
+
 
 export default Menu;

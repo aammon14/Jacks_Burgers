@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Checkout from "./Components/Checkout";
 import EditOrder from "./Components/EditOrder";
 import Item from "./Components/Item";
-import Items from "./Components/Items";
 import Login from "./Components/Login";
 import Menu from "./Components/Menu";
 import Order from "./Components/Order";
@@ -140,7 +139,7 @@ class App extends Component {
               path="/items"
               render={props => {
                 return (
-                  <Items
+                  <Menu
                     {...props}
                     items={this.state.items}
                     getAllItems={this.getAllItems}
