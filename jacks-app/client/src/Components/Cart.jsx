@@ -9,7 +9,8 @@ class Cart extends Component {
     this.state = {
       order: this.props.state.order,
       user: 1,
-      completed: "false"
+      completed: "false",
+      total: null
     };
 
     this.submitOrder = this.submitOrder.bind(this);
@@ -19,13 +20,13 @@ class Cart extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState({
-      completed: 'Cash'
-    })
-    this.submitOrder()
-    }
+      completed: "Cash"
+    });
+    this.submitOrder();
+  }
 
   submitOrder() {
-    console.log(this.state.completed)
+    console.log(this.state.completed);
     axios({
       url: "http://localhost:8080/orders",
       method: "PUT",

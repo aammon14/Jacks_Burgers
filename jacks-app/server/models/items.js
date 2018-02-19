@@ -28,19 +28,19 @@ itemsModel.findById = (req, res, next) => {
 };
 
 itemsModel.create = (req, res, next) => {
+    console.log(req.body);
     db
         .one(
-            "INSERT INTO items (category, name, price, description, image) VALUES ($1, $2, $3, $4, $5) RETURNING id;",
+            "INSERT INTO items (category, name, price, description) VALUES ($1, $2, $3, $4) RETURNING *;",
             [
                 req.body.category,
                 req.body.name,
                 req.body.price,
-                req.body.description,
-                req.body.image
+                req.body.description
             ]
         )
         .then(data => {
-            res.locals.newItemId = data.id;
+            res.locals.newItemId = data;
             next();
         })
         .catch(error => {

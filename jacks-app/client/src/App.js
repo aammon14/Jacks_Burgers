@@ -8,6 +8,7 @@ import Orders from "./Components/Orders";
 import Signup from "./Components/Signup";
 import UserEdit from "./Components/UserEdit";
 import Cart from "./Components/Cart";
+import Menu_Maintenance from "./Components/Menu_Maintenance";
 import axios from "axios";
 import "./App.css";
 import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
@@ -114,11 +115,9 @@ class App extends Component {
     this.setState({ order: order });
   }
 
-  changeCartState(cart){
-     this.setState({ cart: cart });
-  } 
-
-
+  changeCartState(cart) {
+    this.setState({ cart: cart });
+  }
 
   render() {
     return (
@@ -214,6 +213,21 @@ class App extends Component {
                     {...props}
                     users={this.state.users}
                     getAllUser={this.getAllUser}
+                  />
+                );
+              }}
+            />
+            <Route
+              exact
+              path="/Menu_Maintenance"
+              render={props => {
+                return (
+                  <Menu_Maintenance
+                    {...props}
+                    users={this.state.users}
+                    getAllUser={this.getAllUser}
+                    items={this.state.items}
+                    getAllItems={this.getAllItems}
                   />
                 );
               }}
