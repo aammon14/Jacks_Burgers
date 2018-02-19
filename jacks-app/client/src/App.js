@@ -74,6 +74,7 @@ class App extends Component {
         orders: response.data,
         hasData: true
       });
+      //console.log('in getAllOrders, response.data: ', response.data)
     });
     // console.log(orders);
   }
@@ -162,7 +163,7 @@ class App extends Component {
                   <Orders
                     {...props}
                     orders={this.state.orders}
-                    getAllOrders={this.getAllItems}
+                    getAllOrders={this.getAllOrders}
                   />
                 );
               }}

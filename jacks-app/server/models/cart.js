@@ -17,7 +17,7 @@ cartModel.getCart = (req, res, next) => {
 };
 
 cartModel.addItem = (req, res, next) => {
-    console.log(req.body);
+    //console.log(req.body);
     db
         .one(
             "INSERT INTO orders_items (order_id, item_id, comment) VALUES ($1, $2, $3) RETURNING *",

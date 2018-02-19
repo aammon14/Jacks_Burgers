@@ -14,6 +14,21 @@ ordersModel.allOrders = (req, res, next) => {
         });
 };
 
+ordersModel.getAllPastOrders = (req, res, next) => {
+   db
+       .manyOrNone(
+           "SELECT items.name, items.price, items.description, orders_items.comment FROM users JOIN orders ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.completed = 'true';"
+       )
+       .then(data => {
+           res.locals.allPastOrders = data;
+           next();
+       })
+       .catch(error => {
+           console.log("error encountered in ordersModel.getAllPastOrders:", error);
+           next(error);
+       });
+};
+
 ordersModel.findById = (req, res, next) => {
     db
         .one("SELECT * FROM orders WHERE id = $1", [req.params.id])
