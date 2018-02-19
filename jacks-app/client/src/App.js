@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-
-
-import Checkout from "./Components/Checkout";
 import EditItem from "./Components/EditItem";
-
 import Item from "./Components/Item";
 import Login from "./Components/Login";
 import Menu from "./Components/Menu";
@@ -12,10 +8,10 @@ import Orders from "./Components/Orders";
 import Signup from "./Components/Signup";
 import UserEdit from "./Components/UserEdit";
 import Cart from './Components/Cart'
-
 import axios from "axios";
 import "./App.css";
 import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
+
 
 class App extends Component {
   constructor(props) {
