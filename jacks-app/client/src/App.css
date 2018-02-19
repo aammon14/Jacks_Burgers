@@ -152,7 +152,6 @@
   margin-top: 30px;
   border: solid 1px black;
   padding-left: 20px;
-
 }
 
 .menu_container {
@@ -179,6 +178,7 @@
 }
 
 .submit_button {
+  margin: 0 auto;
   margin-top: 25px;
   font-family: avenir;
   font-size: 20px;
@@ -189,6 +189,7 @@
   border-color: #03a9f4;
 }
 
+<<<<<<< HEAD
 .prevOrderItem {
   font-family: avenir;
   padding: 0 5px 5px;
@@ -227,3 +228,19 @@
 
 
 
+=======
+.main_container {
+  display: flex;
+  justify-content: center;
+}
+
+.maintenance_container {
+  height: 300px;
+  width: 300px;
+  margin-left: 25px;
+  margin-top: 16px;
+  background: white;
+  font-family: avenir;
+  font-size: 16px;
+}
+>>>>>>> 6df65693e8dbc3b6d34863dc9593bf0b6e87cc63

@@ -10,12 +10,8 @@ router.get("/:id", itemsModel.findById, (req, res, next) => {
     res.json(res.locals.itemData);
 });
 
-// router.put("/:id", itemsModel.update, (req, res, next) => {
-//     res.json(res.locals.updatedItem);
-// });
-
-router.post("/:id", itemsModel.create, (req, res, next) => {
-    res.json(res.locals.newItemData);
+router.post("/", itemsModel.create, (req, res, next) => {
+    res.json(res.locals.newItemId);
 });
 
 module.exports = router;
