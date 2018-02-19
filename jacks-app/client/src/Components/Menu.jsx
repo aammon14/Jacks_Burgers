@@ -5,6 +5,10 @@ class Menu extends Component {
   render() {
     return (
       <div>
+      <Link to={`/cart`}>
+        Cart
+      </Link>
+      <div>
         {this.props.items.map((el, i) => {
           return (
             <div className="item_div" key={i}>
@@ -18,6 +22,7 @@ class Menu extends Component {
           );
         })}
       </div>
+    </div>
     );
   }
 }

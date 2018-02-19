@@ -26,13 +26,13 @@ class App extends Component {
     };
 
     this.getAllItems = this.getAllItems.bind(this);
-    this.getAllUser = this.getAllUser.bind(this);
+    this.getAllUser = this.getAllUser.bind(this)
     // this.createUser = this.createUser.bind(this);
     this.getAllOrders = this.getAllOrders.bind(this);
     this.changeOrderState = this.changeOrderState.bind(this);
     // this.getOrder = this.getOrder.bind(this);
     // this.createOrder = this.createOrder.bind(this);
-    // this.getCart = this.getCart.bind(this);
+    this.getCart = this.getCart.bind(this);
   }
 
   // Item Calls
@@ -81,8 +81,9 @@ class App extends Component {
   // Checkout Cart Calls
 
   getCart() {
+    console.log(this.state.order)
     axios({
-      url: "http://localhost:8080/cart",
+      url: `http://localhost:8080/cart/${this.state.order}`,
       method: "get"
     }).then(response => {
       this.setState({
@@ -112,7 +113,6 @@ class App extends Component {
     this.getAllItems();
     this.getAllOrders();
     this.getAllUser();
-    this.getCart();
   }
 
   changeOrderState(order) {
@@ -225,6 +225,7 @@ class App extends Component {
                 return (
                   <Cart
                     {...props}
+                    state={this.state}
                     cart={this.state.cart}
                     getCart={this.getCart}
                   />

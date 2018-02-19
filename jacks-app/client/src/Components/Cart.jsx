@@ -6,8 +6,11 @@ class Cart extends Component {
   constructor(props){
     super(props)
     // this.submitOrder=this.submitOrder.bind(this)
+
 };
-  submitOrder() {
+
+  submitOrder(e) {
+  e.preventDefault();
     axios({
       url: "http://localhost:8080/cart",
       method: "POST"
@@ -21,9 +24,10 @@ class Cart extends Component {
     });
 
   }
-componentDidMount(){
-  this.submitOrder()
-}
+  componentDidMount(){
+    this.props.getCart(this.props.state.order);
+  }
+
   render() {
   if (!(this.props.cart ===[])) {
     
@@ -38,6 +42,7 @@ componentDidMount(){
                 </Link>
                 <p>{el.description}</p>
                 <p>{el.price}</p>
+                <p>{el.comment}</p>
               </div>)
         })
       }

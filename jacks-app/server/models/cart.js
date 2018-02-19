@@ -2,9 +2,12 @@ const db = require("../db/setup.js");
 const cartModel = {};
 
 cartModel.getCart = (req, res, next) => {
+    const order = req.params.id
+    console.log(req.params.id)
+    console.log(order)
     db
         .manyOrNone(
-            "SELECT items.name, items.price, items.description, orders_items.comment FROM users JOIN orders ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.completed = 'false';"
+            `SELECT items.name, items.price, items.description, orders_items.comment FROM users JOIN orders ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.id = ${order};`
         )
         .then(data => {
             res.locals.cartData = data;
