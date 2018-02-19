@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
 
@@ -31,15 +31,23 @@ class Orders extends Component {
   render(){
     const prev = this.state.prevOrders.map((el, i) => {
       return (
-        <ul>
-          <li>{el.name}, {el.description}, ${el.price}, Special Instrucitons: {el.comment}</li>
-        </ul>
+        <li className='prevOrderItem'>
+          <div className='prevOrderText'>
+            <h3>{el.name}</h3>
+            <p>{el.description}, ${el.price}</p><p>Special Instrucitons: {el.comment}</p>
+          </div>
+          <div className='prevOrderButtonDiv'>
+            <Link to={`/items/${el.id}`}>
+            <button className='orderAgainButton'>Order {el.name} Again!</button>
+            </Link>
+          </div>
+        </li>
       )
     })
     return(
-      <div>
+      <div className='prevOrderDiv'>
         <h1>Previous Orders</h1>
-        <p>{prev}</p>
+        <ul>{prev}</ul>
       </div>
     );
   }

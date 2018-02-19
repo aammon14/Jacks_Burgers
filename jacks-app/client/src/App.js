@@ -145,6 +145,7 @@ class App extends Component {
                       changeOrderState={this.changeOrderState.bind(this)}
                       changeCartState={this.changeCartState.bind(this)}
                     />
+                    <Link to='/orders'>View Previous Orders</Link>
                   </div>
                 );
               }}
