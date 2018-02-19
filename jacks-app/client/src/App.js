@@ -7,11 +7,10 @@ import Order from "./Components/Order";
 import Orders from "./Components/Orders";
 import Signup from "./Components/Signup";
 import UserEdit from "./Components/UserEdit";
-import Cart from './Components/Cart'
+import Cart from "./Components/Cart";
 import axios from "axios";
 import "./App.css";
 import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
-
 
 class App extends Component {
   constructor(props) {
@@ -90,7 +89,6 @@ class App extends Component {
         cart: response.data,
         hasData: true
       });
-
     });
   }
 
@@ -124,7 +122,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="main-container">
+        <div className="main-container background">
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/items" />} />
             <Route

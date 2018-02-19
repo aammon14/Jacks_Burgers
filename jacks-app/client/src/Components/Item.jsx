@@ -80,17 +80,28 @@ class Item extends Component {
     console.log(this.props.state.order);
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <h1>{this.state.item.name}</h1>
-          <p>{this.state.item.description}</p>
-          <p>{this.state.item.price}</p>
-          <textarea
-            type="text"
-            value={this.state.comment}
-            onChange={this.handleChange}
-          />
-          <input type="submit" name="Submit" value="Add To Cart" />
-        </form>
+        <div className="item_container">
+          <form onSubmit={this.handleSubmit}>
+            <h1 className="item_specific_name">{this.state.item.name}</h1>
+            <p className="item_specific_description">
+              {this.state.item.description}
+            </p>
+            <textarea
+              className="comment"
+              type="text"
+              placeholder="No Salt, Please!"
+              value={this.state.comment}
+              onChange={this.handleChange}
+            />
+            <p className="item_specific_price">{this.state.item.price}</p>
+            <input
+              className="add_to_cart_button"
+              type="submit"
+              name="Submit"
+              value="Add To Cart"
+            />
+          </form>
+        </div>
       </div>
     );
   }
