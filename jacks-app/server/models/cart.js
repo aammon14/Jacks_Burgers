@@ -17,11 +17,11 @@ cartModel.getCart = (req, res, next) => {
 };
 
 cartModel.addItem = (req, res, next) => {
-    console.log(req.body.foot);
+    console.log(req.body);
     db
         .one(
-            "INSERT INTO orders_items (order_id, item_id) VALUES ($1, $2) RETURNING *",
-            [2, req.params.id]
+            "INSERT INTO orders_items (order_id, item_id, comment) VALUES ($1, $2, $3) RETURNING *",
+            [req.body.order, req.params.id, req.body.comment]
         )
         .then(data => {
             res.locals.itemAdded = data;

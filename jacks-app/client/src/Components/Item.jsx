@@ -7,13 +7,16 @@ class Item extends Component {
 
     this.state = {
       item: {},
-      order: 2,
-      user: 2
+      order: this.props.state.order,
+      user: 1,
+      comment: ""
     };
 
     this.getItem = this.getItem.bind(this);
-    this.addItemToCart = this.addItemToCart.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.createOrder = this.createOrder.bind(this);
+    this.addItem = this.addItem.bind(this);
   }
 
   getItem() {
@@ -28,12 +31,11 @@ class Item extends Component {
     });
   }
 
-  addItemToCart(e) {
-    e.preventDefault();
+  addItem() {
     axios({
       url: `http://localhost:8080/cart/${this.props.match.params.id}`,
       method: "post",
-      data: this.state.order
+      data: this.state
     }).then(response => {
       this.setState({
         itemAdded: response.data
@@ -42,34 +44,51 @@ class Item extends Component {
     });
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.addItem();
+    this.props.history.push("/");
+  }
+
+  handleChange(event) {
+    this.setState({ comment: event.target.value });
+    console.log(this.state.comment);
+  }
+
   createOrder(user_id) {
     console.log("ran create order");
     axios({
       url: `http://localhost:8080/orders/${user_id}`,
       method: "post"
     }).then(response => {
+      this.props.changeOrderState(response.data.id);
       this.setState({
-        order: response.data.id
+        order: this.props.state.order
       });
     });
   }
 
   componentDidMount() {
     this.getItem();
-    if (this.state.order === 0) {
+    if (this.props.state.order === 0) {
       this.createOrder(this.state.user);
     }
   }
 
   render() {
-    const order = this.state.order;
+    console.log(this.state.order);
+    console.log(this.props.state.order);
     return (
       <div>
-        <form onSubmit={this.addItemToCart}>
+        <form onSubmit={this.handleSubmit}>
           <h1>{this.state.item.name}</h1>
-          <input type="hidden" name="foot" value={order} />
           <p>{this.state.item.description}</p>
           <p>{this.state.item.price}</p>
+          <textarea
+            type="text"
+            value={this.state.comment}
+            onChange={this.handleChange}
+          />
           <input type="submit" name="Submit" value="Add To Cart" />
         </form>
       </div>

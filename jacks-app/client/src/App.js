@@ -23,6 +23,7 @@ class App extends Component {
       items: [],
       // cart: [],
       orders: [],
+      order: 0,
       hasData: false
     };
 
@@ -30,6 +31,7 @@ class App extends Component {
     this.getAllUser = this.getAllUser.bind(this);
     // this.createUser = this.createUser.bind(this);
     this.getAllOrders = this.getAllOrders.bind(this);
+    this.changeOrderState = this.changeOrderState.bind(this);
     // this.getOrder = this.getOrder.bind(this);
     // this.createOrder = this.createOrder.bind(this);
     // this.getCart = this.getCart.bind(this);
@@ -109,6 +111,10 @@ class App extends Component {
     this.getCart();
   }
 
+  changeOrderState(order) {
+    this.setState({ order: order });
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -135,7 +141,8 @@ class App extends Component {
                 return (
                   <Item
                     {...props}
-                    items={this.state.items}
+                    state={this.state}
+                    changeOrderState={this.changeOrderState.bind(this)}
                     getAllItems={this.getAllItems}
                     addItemToCart={this.addItemToCart}
                   />
