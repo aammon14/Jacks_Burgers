@@ -26,12 +26,10 @@ class App extends Component {
     };
 
     this.getAllItems = this.getAllItems.bind(this);
-    this.getAllUser = this.getAllUser.bind(this)
-    // this.createUser = this.createUser.bind(this);
+    this.getAllUser = this.getAllUser.bind(this);
     this.getAllOrders = this.getAllOrders.bind(this);
     this.changeOrderState = this.changeOrderState.bind(this);
-    // this.getOrder = this.getOrder.bind(this);
-    // this.createOrder = this.createOrder.bind(this);
+    this.changeCartState = this.changeCartState.bind(this);
     this.getCart = this.getCart.bind(this);
   }
 
@@ -73,15 +71,12 @@ class App extends Component {
         orders: response.data,
         hasData: true
       });
-      //console.log('in getAllOrders, response.data: ', response.data)
     });
-    // console.log(orders);
   }
 
   // Checkout Cart Calls
 
   getCart() {
-    console.log(this.state.order)
     axios({
       url: `http://localhost:8080/cart/${this.state.order}`,
       method: "get"
@@ -119,6 +114,12 @@ class App extends Component {
     this.setState({ order: order });
   }
 
+  changeCartState(cart){
+     this.setState({ cart: cart });
+  } 
+
+
+
   render() {
     return (
       <BrowserRouter>
@@ -130,11 +131,21 @@ class App extends Component {
               path="/items"
               render={props => {
                 return (
-                  <Menu
-                    {...props}
-                    items={this.state.items}
-                    getAllItems={this.getAllItems}
-                  />
+                  <div className="items_page">
+                    <Menu
+                      {...props}
+                      items={this.state.items}
+                      getAllItems={this.getAllItems}
+                    />
+                    <Cart
+                      {...props}
+                      state={this.state}
+                      cart={this.state.cart}
+                      getCart={this.getCart}
+                      changeOrderState={this.changeOrderState.bind(this)}
+                      changeCartState={this.changeCartState.bind(this)}
+                    />
+                  </div>
                 );
               }}
             />
@@ -147,8 +158,10 @@ class App extends Component {
                     {...props}
                     state={this.state}
                     changeOrderState={this.changeOrderState.bind(this)}
+                    changeCartState={this.changeCartState.bind(this)}
                     getAllItems={this.getAllItems}
                     addItemToCart={this.addItemToCart}
+                    getCart={this.getCart}
                   />
                 );
               }}
@@ -214,20 +227,6 @@ class App extends Component {
                     {...props}
                     users={this.state.users}
                     getAllUser={this.getAllUser}
-                  />
-                );
-              }}
-            />
-            <Route
-              exact
-              path="/cart"
-              render={props => {
-                return (
-                  <Cart
-                    {...props}
-                    state={this.state}
-                    cart={this.state.cart}
-                    getCart={this.getCart}
                   />
                 );
               }}

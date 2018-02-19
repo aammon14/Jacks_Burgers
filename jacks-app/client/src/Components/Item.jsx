@@ -27,7 +27,6 @@ class Item extends Component {
       this.setState({
         item: response.data
       });
-      console.log(response.data);
     });
   }
 
@@ -37,10 +36,10 @@ class Item extends Component {
       method: "post",
       data: this.state
     }).then(response => {
+      this.props.getCart(this.props.state.order);
       this.setState({
         itemAdded: response.data
       });
-      console.log(response.data);
     });
   }
 
@@ -52,11 +51,9 @@ class Item extends Component {
 
   handleChange(event) {
     this.setState({ comment: event.target.value });
-    console.log(this.state.comment);
   }
 
   createOrder(user_id) {
-    console.log("ran create order");
     axios({
       url: `http://localhost:8080/orders/${user_id}`,
       method: "post"
@@ -76,8 +73,6 @@ class Item extends Component {
   }
 
   render() {
-    console.log(this.state.order);
-    console.log(this.props.state.order);
     return (
       <div>
         <div className="item_container">

@@ -18,4 +18,8 @@ router.post("/:user_id", ordersModel.create, (req, res, next) => {
     res.json(res.locals.newOrderId);
 });
 
+router.put("/", ordersModel.update, (req, res, next) => {
+    res.json(res.locals.updatedOrderData)
+})
+
 module.exports = router;

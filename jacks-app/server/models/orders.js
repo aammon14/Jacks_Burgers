@@ -58,4 +58,22 @@ ordersModel.create = (req, res, next) => {
         });
 };
 
+ordersModel.update = (req, res, next) => {
+  console.log(req.body)
+    db
+        .manyOrNone("UPDATE orders SET completed = $1 WHERE id = $2 AND user_id = $3", [
+            'true',
+            req.body.order,
+            req.body.user
+        ])
+        .then(data => {
+            res.locals.updatedOrderData = data;
+            next();
+        })
+        .catch(error => {
+            console.log("error encountered in ordersModel.update:", error);
+            next(error);
+        });
+};
+
 module.exports = ordersModel;

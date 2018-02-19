@@ -108,6 +108,13 @@
   padding: 0px 0px 0px 20px;
 }
 
+.cart_item_div_content {
+  font-family: avenir;
+  color: #2d2d2d;
+  text-decoration: none;
+  padding: 0px 0px 0px 20px;
+}
+
 .add_to_cart_button {
   margin-top: 25px;
   font-family: avenir;
@@ -134,3 +141,51 @@
   color: #a1a1a1;
   font-size: 17px;
 }
+
+.cart_container {
+  width: 250px;
+  background-color: white;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  border: solid 1px black;
+  padding-left: 20px;
+
+}
+
+.menu_container {
+  margin-right: 200px;
+}
+.items_page {
+  display: flex;
+  justify-content: center;
+}
+
+.cart_item_name {
+  font-family: avenir;
+  font-size: 18px;
+}
+
+.cart_item_description {
+  font-family: avenir;
+  font-size: 14px;
+}
+
+.cart_item_price {
+  font-family: avenir;
+  font-size: 14px;
+}
+
+.submit_button {
+  margin-top: 25px;
+  font-family: avenir;
+  font-size: 20px;
+  padding: 10px 35px;
+  border-radius: 40px;
+  background-color: #03a9f4;
+  color: white;
+  border-color: #03a9f4;
+}
+
