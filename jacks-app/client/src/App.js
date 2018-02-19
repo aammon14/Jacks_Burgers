@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 
+<<<<<<< HEAD
 import Checkout from "./Components/Checkout";
 import EditItem from "./Components/EditItem";
+=======
+import EditOrder from "./Components/EditOrder";
+>>>>>>> 0441a0b64a011a967bebf66d0e84f9e8df2d5166
 import Item from "./Components/Item";
 import Login from "./Components/Login";
 import Menu from "./Components/Menu";
@@ -9,6 +13,7 @@ import Order from "./Components/Order";
 import Orders from "./Components/Orders";
 import Signup from "./Components/Signup";
 import UserEdit from "./Components/UserEdit";
+import Cart from './Components/Cart'
 
 import axios from "axios";
 import "./App.css";
@@ -21,7 +26,7 @@ class App extends Component {
     this.state = {
       users: {},
       items: [],
-      // cart: [],
+      cart: [],
       orders: [],
       order: 0,
       hasData: false
@@ -85,7 +90,13 @@ class App extends Component {
     axios({
       url: "http://localhost:8080/cart",
       method: "get"
-    }).then(response => {});
+    }).then(response => {
+      this.setState({
+        cart: response.data,
+        hasData: true
+      });
+
+    });
   }
 
   // Past Orders Calls
@@ -210,6 +221,19 @@ class App extends Component {
                     {...props}
                     users={this.state.users}
                     getAllUser={this.getAllUser}
+                  />
+                );
+              }}
+            />
+            <Route
+              exact
+              path="/cart"
+              render={props => {
+                return (
+                  <Cart
+                    {...props}
+                    cart={this.state.cart}
+                    getCart={this.getCart}
                   />
                 );
               }}
