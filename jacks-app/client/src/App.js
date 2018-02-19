@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 
-<<<<<<< HEAD
+
 import Checkout from "./Components/Checkout";
 import EditItem from "./Components/EditItem";
-=======
-import EditOrder from "./Components/EditOrder";
->>>>>>> 0441a0b64a011a967bebf66d0e84f9e8df2d5166
+
 import Item from "./Components/Item";
 import Login from "./Components/Login";
 import Menu from "./Components/Menu";
