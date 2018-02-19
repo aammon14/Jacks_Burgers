@@ -21,8 +21,8 @@ class Orders extends Component {
       this.setState({
         prevOrders: response.data
       });
-      console.log('in getPrevOrders, response.data: ', response.data);
-      console.log('it getPrevOrders, this.state.prevOrders: ', this.state.prevOrders)
+      //console.log('in getPrevOrders, response.data: ', response.data);
+      //console.log('it getPrevOrders, this.state.prevOrders: ', this.state.prevOrders)
     });
   }
   componentDidMount() {
