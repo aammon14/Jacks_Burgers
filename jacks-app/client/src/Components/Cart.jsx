@@ -59,19 +59,17 @@ class Cart extends Component {
                     className="cart_item_div_content"
                     to={`/items/${el.id}`}
                   >
-                    <h1 className="cart_item_name">{el.name}</h1>
+                    <h1 className="cart_item_name">{el.name} ${el.price}</h1>
                     <p>{el.description}</p>
-                    <p>{el.price}</p>
-                    <p>{el.comment}</p>
+                    <p>Comment: {el.comment}</p>
                   </Link>
                 </div>
               );
             })}
-            <h3> Total  <span> ${total}</span></h3>
-            
-            
-          
+            <div className="checkout">
+            <h3 className='total'> Total  <span> ${total}</span></h3>
             <input className="submit_button" type="submit" value="submit" />
+            </div>
           </form>
           
         </div>

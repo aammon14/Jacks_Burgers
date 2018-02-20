@@ -152,6 +152,8 @@
   margin-top: 30px;
   border: solid 1px black;
   padding-left: 20px;
+  height: 80vh;
+  
 }
 
 .menu_container {
@@ -187,6 +189,7 @@
   background-color: #03a9f4;
   color: white;
   border-color: #03a9f4;
+
 }
 
 
@@ -254,4 +257,7 @@
   font-family: avenir;
   font-size: 16px;
 }
-
+.checkout{
+ position:absolute;
+ bottom:150px;
+}
