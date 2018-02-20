@@ -11,7 +11,7 @@ class Orders extends Component {
       prevOrders: []
     };
     this.getPrevOrders = this.getPrevOrders.bind(this);
-    console.log(this.state.prevOrders)
+    //console.log(this.state.prevOrders)
   };
 
   getPrevOrders() {

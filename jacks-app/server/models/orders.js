@@ -80,7 +80,7 @@ ordersModel.update = (req, res, next) => {
   db
     .manyOrNone(
       "UPDATE orders SET status = $1 WHERE id = $2 AND user_id = $3",
-      [req.body.completed, req.body.order, req.body.user]
+      [req.body.status, req.body.order, req.body.user]
     )
     .then(data => {
       res.locals.updatedOrderData = data;
