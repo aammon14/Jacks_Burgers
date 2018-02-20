@@ -11,7 +11,7 @@ class Item extends Component {
       user: 1,
       comment: ""
     };
-
+    console.log('in item constructor, this.props.state.order: ', this.props.state.order)
     this.getItem = this.getItem.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);

@@ -23,7 +23,7 @@ class App extends Component {
       items: [],
       cart: [],
       orders: [],
-      order: 0,
+      order: 1,
       hasData: false
     };
 
@@ -229,7 +229,11 @@ class App extends Component {
               path="/kitchen"
               render={props => {
                 return (
-                  <KitchenMode />
+                  <KitchenMode
+                    {...props}
+                    state={this.state} 
+                    changeOrderState={this.changeOrderState.bind(this)}
+                  />
                 );
               }}
             />

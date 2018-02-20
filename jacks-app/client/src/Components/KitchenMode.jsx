@@ -6,12 +6,13 @@ class KitchenMode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      orders: this.props.orders,
+      order: 0,
       status: 'inprogress',
-      currentOrders: []
+      currentOrders: [],
+      user: 1
     };
     this.getCurrentOrders = this.getCurrentOrders.bind(this);
-    this.completeCurrentOrder = this.completeCurrentOrder.bind(this);
+    //this.completeCurrentOrder = this.completeCurrentOrder.bind(this);
     this.getCurrentOrdersItems = this.getCurrentOrdersItems.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submitOrder = this.submitOrder.bind(this);
@@ -25,6 +26,7 @@ class KitchenMode extends Component {
       this.setState({
         currentOrders: response.data
       });
+      console.log('in getCurrentOrders currentOrders: ', response.data)
     });
   };
 
@@ -39,14 +41,6 @@ class KitchenMode extends Component {
     });
   };
 
-  completeCurrentOrder() {
-    axios({
-      url: "http://localhost:8080/orders/current",
-      method: "put"
-    }).then(response => {
-      this.props.markOrderComplete();
-    });
-  }
   componentDidMount() {
     this.getCurrentOrders();
   };
@@ -54,37 +48,38 @@ class KitchenMode extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState({
-      status: "completed"
+      status: "completed",
+      order: 1
     }, this.submitOrder)
   };
 
   submitOrder() {
+    console.log('in submit order, this.state.currentOrders: ', this.state.currentOrders)
     console.log(this.state.status);
     axios({
-      url: "http://localhost:8080/orders",
+      url: "http://localhost:8080/orders/",
       method: "PUT",
       data: this.state
     }).then(response => {
-      console.log(response)
+      console.log(this.state.currentOrders)
     });
   };
 
   render() {
-    const item = this.state.currentOrdersItem.map((el, i) => {
-      return (
-        <div>{el.name}</div>
-      )
-    })
     const current = this.state.currentOrders.map((el, i) => {
-      console.log(this.state.currentOrders)
+      //console.log(this.state.currentOrders[0])
       return (
         <li className='currOrderItem' key={i}>
           <div className='prevOrderText'>
             <p>Order Number: {el.id}</p>
-            {item}
+            <p>Order for: {el.username}</p>
+            <p>Status: {el.status}</p>
+            <div>
+          
+            </div>
           </div>
           <div className='prevOrderButtonDiv'>
-            <button onClick={this.handleSubmit} className='orderAgainButton'>Mark Order Complete</button>
+            <button value={el.id} onClick={this.handleSubmit} className='orderAgainButton'>Mark Order {el.id} Complete</button>
           </div>
         </li>
       )

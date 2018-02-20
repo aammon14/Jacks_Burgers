@@ -34,7 +34,7 @@ ordersModel.getAllPastOrders = (req, res, next) => {
 ordersModel.getAllCurrentOrders = (req, res, next) => {
     db
       .manyOrNone(
-        "SELECT id FROM orders WHERE status = 'inprogress';"
+        "SELECT orders.id, orders.status, users.username FROM orders JOIN users ON orders.user_id = users.id WHERE status = 'inprogress';"
       )
        // .manyOrNone(
        //     "SELECT orders_items.order_id, items.name, orders_items.comment FROM orders JOIN users ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.status = 'inprogress';"
@@ -92,7 +92,9 @@ ordersModel.create = (req, res, next) => {
 };
 
 ordersModel.update = (req, res, next) => {
-  console.log(req.body);
+  console.log('in ordersModel.update, req.body.order: ', req.body.order);
+  console.log('in ordersModel.update, req.body.user: ', req.body.user);
+  console.log('in ordersModel.update, req.body.status: ', req.body.status);
   db
     .manyOrNone(
       "UPDATE orders SET status = $1 WHERE id = $2 AND user_id = $3",
