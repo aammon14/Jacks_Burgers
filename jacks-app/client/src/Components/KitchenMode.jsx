@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
 class KitchenMode extends Component {
@@ -12,6 +12,7 @@ class KitchenMode extends Component {
     };
     this.getCurrentOrders = this.getCurrentOrders.bind(this);
     this.completeCurrentOrder = this.completeCurrentOrder.bind(this);
+    this.getCurrentOrdersItems = this.getCurrentOrdersItems.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submitOrder = this.submitOrder.bind(this);
   };
@@ -23,6 +24,17 @@ class KitchenMode extends Component {
     }).then(response => {
       this.setState({
         currentOrders: response.data
+      });
+    });
+  };
+
+  getCurrentOrdersItems() {
+    axios({
+      url: "http://localhost:8080/orders/currentitem",
+      method: "get"
+    }).then(response => {
+      this.setState({
+        currentOrdersItem: response.data
       });
     });
   };
@@ -58,12 +70,18 @@ class KitchenMode extends Component {
   };
 
   render() {
+    const item = this.state.currentOrdersItem.map((el, i) => {
+      return (
+        <div>{el.name}</div>
+      )
+    })
     const current = this.state.currentOrders.map((el, i) => {
+      console.log(this.state.currentOrders)
       return (
         <li className='currOrderItem' key={i}>
           <div className='prevOrderText'>
-            <h3>{el.name}</h3>
-            <p>Special Instrucitons: {el.comment}</p>
+            <p>Order Number: {el.id}</p>
+            {item}
           </div>
           <div className='prevOrderButtonDiv'>
             <button onClick={this.handleSubmit} className='orderAgainButton'>Mark Order Complete</button>
@@ -73,6 +91,7 @@ class KitchenMode extends Component {
     })
     return(
       <div className='prevOrderDiv'>
+        <Link to='/items'>Back to Menu</Link>
         <h1>Current Orders</h1>
         <ul>{current}</ul>
       </div>

@@ -33,9 +33,12 @@ ordersModel.getAllPastOrders = (req, res, next) => {
 
 ordersModel.getAllCurrentOrders = (req, res, next) => {
     db
-       .manyOrNone(
-           "SELECT items.id, items.name, orders_items.comment FROM users JOIN orders ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.status = 'inprogress';"
-       )
+      .manyOrNone(
+        "SELECT id FROM orders WHERE status = 'inprogress';"
+      )
+       // .manyOrNone(
+       //     "SELECT orders_items.order_id, items.name, orders_items.comment FROM orders JOIN users ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.status = 'inprogress';"
+       // )
        .then(data => {
            res.locals.allCurrentOrders = data;
            next();
@@ -44,6 +47,19 @@ ordersModel.getAllCurrentOrders = (req, res, next) => {
            console.log("error encountered in ordersModel.getAllPastOrders:", error);
            next(error);
        });
+};
+
+ordersModel.getCurrentOrderItems = (req, res, next) => {
+  db
+    .manyOrNone(
+      "SELECT orders_items.order_id, items.name, orders_items.comment FROM orders JOIN users ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.status = 'inprogress';"
+    )
+    .then(data => {
+      res.locals.currentOrderItem = data;
+    })
+    .catch(error => {
+      console.log("error encountered in ordersModel.getCurrentOrderItems:", error);
+    });
 };
 
 ordersModel.findById = (req, res, next) => {
