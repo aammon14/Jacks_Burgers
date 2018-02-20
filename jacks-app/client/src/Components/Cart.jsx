@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
+
 
 class Cart extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      order: this.props.state.order,
+      order: props.state.order,
       user: 1,
-      status: "cart",
-      total: null
+      completed: "false"
+
     };
 
     this.submitOrder = this.submitOrder.bind(this);
@@ -19,18 +20,14 @@ class Cart extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    this.setState(
-      {
-        status: "inprogress"
-      },
-      this.submitOrder
-    );
-
+    this.setState({
+      completed: "Cash"
+    });
+    this.submitOrder();
   }
 
   submitOrder() {
-    console.log(this.state.status);
+    console.log(this.state.completed);
     axios({
       url: "http://localhost:8080/orders",
       method: "PUT",
@@ -46,7 +43,12 @@ class Cart extends Component {
   }
 
   render() {
+    console.log(this.props.cart)
+
     if (!(this.props.cart === [])) {
+      const total = this.props.cart.reduce(function(prev,current){
+        return prev + current.price
+      },0)
       return (
         <div className="cart_container">
           <form onSubmit={this.handleSubmit}>
@@ -65,8 +67,13 @@ class Cart extends Component {
                 </div>
               );
             })}
+            <h3> Total  <span> ${total}</span></h3>
+            
+            
+          
             <input className="submit_button" type="submit" value="submit" />
           </form>
+          
         </div>
       );
     }
