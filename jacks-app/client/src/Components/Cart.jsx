@@ -9,7 +9,7 @@ class Cart extends Component {
     this.state = {
       order: this.props.state.order,
       user: 1,
-      completed: "false",
+      status: "cart",
       total: null
     };
 
@@ -20,9 +20,8 @@ class Cart extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState({
-      completed: "Cash"
-    });
-    this.submitOrder();
+      status: "inprogress"
+    }, this.submitOrder)
   }
 
   submitOrder() {

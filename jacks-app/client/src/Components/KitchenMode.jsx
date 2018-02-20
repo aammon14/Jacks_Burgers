@@ -7,9 +7,11 @@ class KitchenMode extends Component {
   super(props);
   this.state = {
     orders: this.props.orders,
+    status: 'inprogress',
     currentOrders: []
   };
   this.getCurrentOrders = this.getCurrentOrders.bind(this);
+  this.completeCurrentOrder = this.completeCurrentOrder.bind(this);
   }
   getCurrentOrders() {
     axios({
@@ -21,9 +23,36 @@ class KitchenMode extends Component {
       });
     });
   }
-  componentDidMount() {
-    this.getCurrentOrders()
+  completeCurrentOrder() {
+    axios({
+      url: "http://localhost:8080/orders/current",
+      method: "put"
+    }).then(response => {
+      this.props.markOrderComplete();
+    });
   }
+  componentDidMount() {
+    this.getCurrentOrders();
+  }
+
+handleSubmit(e) {
+    e.preventDefault();
+    this.setState({
+      status: "completed"
+    }, this.submitOrder)
+  }
+
+  submitOrder() {
+    console.log(this.state.status);
+    axios({
+      url: "http://localhost:8080/orders",
+      method: "PUT",
+      data: this.state
+    }).then(response => {
+      console.log(response)
+    });
+  }
+
   render() {
     const current = this.state.currentOrders.map((el, i) => {
       return (
@@ -33,7 +62,7 @@ class KitchenMode extends Component {
             <p>Special Instrucitons: {el.comment}</p>
           </div>
           <div className='prevOrderButtonDiv'>
-            <button className='orderAgainButton'>Mark Order Complete</button>
+            <button onClick={this.handleSubmit} className='orderAgainButton'>Mark Order Complete</button>
           </div>
         </li>
       )
