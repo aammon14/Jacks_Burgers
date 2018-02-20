@@ -27,6 +27,19 @@ usersModel.findById = (req, res, next) => {
         });
 };
 
+usersModel.findByUsername = (req, res, next) => {
+    db
+        .one("SELECT * FROM users WHERE username = $1", [req.params.username])
+        .then(data => {
+            res.locals.userData = data;
+            next();
+        })
+        .catch(error => {
+            console.log("error encountered in usersModel.findById:", error);
+            next(error);
+        });
+};
+
 usersModel.create = (req, res, next) => {
     db
         .one(

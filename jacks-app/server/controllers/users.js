@@ -7,6 +7,12 @@ router.get("/", usersModel.allUsers, (req, res, next) => {
 });
 
 router.get("/:id", usersModel.findById, (req, res, next) => {
+    console.log("id");
+    res.json(res.locals.userData);
+});
+
+router.get("/username", usersModel.findByUsername, (req, res, next) => {
+    console.log("userame");
     res.json(res.locals.userData);
 });
 

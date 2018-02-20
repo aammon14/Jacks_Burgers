@@ -12,14 +12,14 @@ CREATE TABLE orders (
     id BIGSERIAL PRIMARY KEY,
     user_id SERIAL,
     FOREIGN KEY (user_id) REFERENCES users(id),
-    completed VARCHAR(255)
+    status VARCHAR(255)
 );
 
 CREATE TABLE items (
     id BIGSERIAL PRIMARY KEY,
     category VARCHAR(255),
     name VARCHAR(255),
-    price VARCHAR(255),
+    price INT,
     description VARCHAR(255),
     image VARCHAR(255)
 );
