@@ -136,6 +136,13 @@ class App extends Component {
                       {...props}
                       items={this.state.items}
                       getAllItems={this.getAllItems}
+                      changeOrderState={this.changeOrderState.bind(this)}
+                      changeCartState={this.changeCartState.bind(this)}
+                      orders={this.state.orders}
+                      state={this.state}
+                      getCart={this.getCart}
+                      addItemToCart={this.addItemToCart}
+
                     />
                     <Cart
                       {...props}
@@ -145,10 +152,12 @@ class App extends Component {
                       changeOrderState={this.changeOrderState.bind(this)}
                       changeCartState={this.changeCartState.bind(this)}
                     />
+                
                   </div>
                 );
               }}
             />
+
             <Route
               exact
               path="/items/:id"
@@ -162,6 +171,8 @@ class App extends Component {
                     getAllItems={this.getAllItems}
                     addItemToCart={this.addItemToCart}
                     getCart={this.getCart}
+                     orders={this.state.orders}
+
                   />
                 );
               }}

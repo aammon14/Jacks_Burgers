@@ -9,7 +9,6 @@ class Item extends Component {
       item: {},
       order: this.props.state.order,
       user: 1,
-      comment: ""
     };
 
     this.getItem = this.getItem.bind(this);
