@@ -16,7 +16,7 @@ INSERT INTO items (category, name, price, description) VALUES
 ('Entree', 'Chicken fingers', 9.95, 'Worlds best chicken fingers'),
 ('Entree', 'Chicken Noodle Soup', 9.95, 'Worlds best chicken noodle soup');
 
-INSERT INTO orders (user_id, completed) VALUES
+INSERT INTO orders (user_id, status) VALUES
 (2, TRUE),
 (2, FALSE);
 
