@@ -36,8 +36,8 @@
 }
 
 .item_div {
-  width: 500px;
-  height: 175px;
+  width: 20vw;
+  height: 24vh;
   background-color: white;
   border-radius: 2px;
   display: flex;
@@ -45,17 +45,18 @@
   flex-direction: column;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   margin: 15px auto;
+  text-align: center;
 }
 
 .item_div:hover {
-  width: 505px;
-  height: 180px;
+  /*width: 10vh;*/
+  /*height: 180px;*/
   background-color: white;
   border-radius: 2px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 5px 8px rgba(0, 0, 0, 0.1);
 }
 
 .item_container {
@@ -74,22 +75,21 @@ width: 45vw;
 .item_name {
   text-decoration: none;
   font-family: avenir;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .item_specific_name {
   text-decoration: none;
   font-family: avenir;
-  font-size: 35px;
+  font-size: 25px;
 }
 
 .item_price {
-  padding-top: 10px;
+  /*padding-top: 10px;*/
   font-size: 18px;
 }
 
 .item_specific_price {
-  padding-top: 10px;
   font-size: 22px;
 }
 
@@ -106,14 +106,14 @@ width: 45vw;
   font-family: avenir;
   color: #2d2d2d;
   text-decoration: none;
-  padding: 0px 0px 0px 20px;
+  /*padding: 0px 0px 0px 20px;*/
 }
 
 .cart_item_div_content {
   font-family: avenir;
   color: #2d2d2d;
   text-decoration: none;
-  padding: 0px 0px 0px 20px;
+  /*padding: 0px 0px 0px 20px;*/
 }
 
 .add_to_cart_button {
@@ -146,7 +146,8 @@ width: 45vw;
 }
 
 .cart_container {
-  width: 250px;
+  width: 14vw;
+  height: 80vh;
   background-color: white;
   border-radius: 2px;
   display: flex;
@@ -154,7 +155,9 @@ width: 45vw;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   margin-top: 30px;
   border: solid 1px black;
-  padding-left: 20px;
+  text-align: center;
+  right: 100px;
+
 
 }
 

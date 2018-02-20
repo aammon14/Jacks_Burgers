@@ -44,6 +44,8 @@ class Cart extends Component {
     if (!(this.props.cart === [])) {
       return (
         <div className="cart_container">
+               <h1> Your Order </h1>
+
           <form onSubmit={this.handleSubmit}>
             {this.props.cart.map((el, i) => {
               return (
@@ -51,7 +53,7 @@ class Cart extends Component {
                   <Link
                     className="cart_item_div_content"
                     to={`/items/${el.id}`}
-                  >
+                  > 
                     <h1 className="cart_item_name">{el.name}</h1>
                     <p>{el.description}</p>
                     <p>{el.price}</p>
