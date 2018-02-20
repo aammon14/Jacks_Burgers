@@ -43,8 +43,6 @@ class Cart extends Component {
   }
 
   render() {
-    console.log(this.props.cart)
-
     if (!(this.props.cart === [])) {
       const total = this.props.cart.reduce(function(prev,current){
         return prev + current.price
@@ -62,6 +60,7 @@ class Cart extends Component {
                     <h1 className="cart_item_name">{el.name} ${el.price}</h1>
                     <p>{el.description}</p>
                     <p>Comment: {el.comment}</p>
+                  
                   </Link>
                 </div>
               );

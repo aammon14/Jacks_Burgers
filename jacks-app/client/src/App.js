@@ -124,10 +124,17 @@ class App extends Component {
                 return (
                   <div className="items_page">
                     <Menu
-                      {...props}
-                      items={this.state.items}
-                      getAllItems={this.getAllItems}
-                    />
+                     {...props}
+                     items={this.state.items}
+                     getAllItems={this.getAllItems}
+                     changeOrderState={this.changeOrderState.bind(this)}
+                     changeCartState={this.changeCartState.bind(this)}
+                     orders={this.state.orders}
+                     state={this.state}
+                     getCart={this.getCart}
+                     addItemToCart={this.addItemToCart}
+
+                   />
                     <Cart
                       {...props}
                       state={this.state}
@@ -248,13 +255,28 @@ class App extends Component {
               }}
             />
             <Route
-              exactpath="/Login"
+              exact 
+              path="/Login"
               render={props => {
                 return (
                   <Login
                     {...props}
                     users={this.state.users}
                     getAllUser={this.getAllUser}
+                  />
+                );
+              }}
+            />
+             <Route
+              exact 
+              path="/Appetizers"
+              render={props => {
+                return (
+                  <Menu
+                    {...props}
+                    users={this.state.users}
+                    getAllUser={this.getAllUser}
+                    items={this.state.items}
                   />
                 );
               }}
