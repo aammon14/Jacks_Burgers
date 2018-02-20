@@ -12,7 +12,6 @@ class KitchenMode extends Component {
       user: 1
     };
     this.getCurrentOrders = this.getCurrentOrders.bind(this);
-    //this.completeCurrentOrder = this.completeCurrentOrder.bind(this);
     this.getCurrentOrdersItems = this.getCurrentOrdersItems.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submitOrder = this.submitOrder.bind(this);
@@ -45,41 +44,37 @@ class KitchenMode extends Component {
     this.getCurrentOrders();
   };
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(id) {
     this.setState({
       status: "completed",
-      order: 1
+      order: id
     }, this.submitOrder)
   };
 
   submitOrder() {
     console.log('in submit order, this.state.currentOrders: ', this.state.currentOrders)
-    console.log(this.state.status);
+    console.log(this.state);
     axios({
       url: "http://localhost:8080/orders/",
       method: "PUT",
       data: this.state
     }).then(response => {
-      console.log(this.state.currentOrders)
+      console.log(this.state.currentOrders);
+      this.getCurrentOrders();
     });
   };
 
   render() {
     const current = this.state.currentOrders.map((el, i) => {
-      //console.log(this.state.currentOrders[0])
       return (
         <li className='currOrderItem' key={i}>
           <div className='prevOrderText'>
             <p>Order Number: {el.id}</p>
             <p>Order for: {el.username}</p>
             <p>Status: {el.status}</p>
-            <div>
-          
-            </div>
           </div>
           <div className='prevOrderButtonDiv'>
-            <button value={el.id} onClick={this.handleSubmit} className='orderAgainButton'>Mark Order {el.id} Complete</button>
+            <button value={el.id} onClick={this.handleSubmit.bind(this, el.id)} className='orderAgainButton'>Mark Order {el.id} Complete</button>
           </div>
         </li>
       )

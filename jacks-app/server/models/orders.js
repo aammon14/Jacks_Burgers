@@ -34,11 +34,8 @@ ordersModel.getAllPastOrders = (req, res, next) => {
 ordersModel.getAllCurrentOrders = (req, res, next) => {
     db
       .manyOrNone(
-        "SELECT orders.id, orders.status, users.username FROM orders JOIN users ON orders.user_id = users.id WHERE status = 'inprogress';"
+        "SELECT orders.id, orders.status, users.username, items.name, orders_items.comment FROM orders JOIN users ON orders.user_id = users.id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE status = 'inprogress';"
       )
-       // .manyOrNone(
-       //     "SELECT orders_items.order_id, items.name, orders_items.comment FROM orders JOIN users ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.status = 'inprogress';"
-       // )
        .then(data => {
            res.locals.allCurrentOrders = data;
            next();
