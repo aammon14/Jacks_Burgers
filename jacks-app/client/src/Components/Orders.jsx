@@ -21,8 +21,6 @@ class Orders extends Component {
       this.setState({
         prevOrders: response.data
       });
-      //console.log('in getPrevOrders, response.data: ', response.data);
-      //console.log('it getPrevOrders, this.state.prevOrders: ', this.state.prevOrders)
     });
   }
   componentDidMount() {
@@ -31,14 +29,14 @@ class Orders extends Component {
   render(){
     const prev = this.state.prevOrders.map((el, i) => {
       return (
-        <li className='prevOrderItem'>
+        <li className='prevOrderItem' key={i}>
           <div className='prevOrderText'>
             <h3>{el.name}</h3>
             <p>{el.description}, ${el.price}</p><p>Special Instrucitons: {el.comment}</p>
           </div>
           <div className='prevOrderButtonDiv'>
             <Link to={`/items/${el.id}`}>
-            <button className='orderAgainButton'>Order {el.name} Again!</button>
+              <button className='orderAgainButton'>Order {el.name} Again!</button>
             </Link>
           </div>
         </li>

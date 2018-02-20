@@ -9,6 +9,7 @@ import Signup from "./Components/Signup";
 import UserEdit from "./Components/UserEdit";
 import Cart from "./Components/Cart";
 import Menu_Maintenance from "./Components/Menu_Maintenance";
+import KitchenMode from "./Components/KitchenMode";
 import axios from "axios";
 import "./App.css";
 import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
@@ -88,15 +89,6 @@ class App extends Component {
       });
     });
   }
-
-  // Past Orders Calls
-
-  // getAllPastOrders() {
-  //   axios({
-  //     url: "localhost:3000/orders/",
-  //     method: "get"
-  //   }).then(response => {});
-  // }
 
   // getItemsByCategory() {
   //   axios({
@@ -230,6 +222,15 @@ class App extends Component {
                     items={this.state.items}
                     getAllItems={this.getAllItems}
                   />
+                );
+              }}
+            />
+            <Route
+              exact
+              path="/kitchen"
+              render={props => {
+                return (
+                  <KitchenMode />
                 );
               }}
             />
