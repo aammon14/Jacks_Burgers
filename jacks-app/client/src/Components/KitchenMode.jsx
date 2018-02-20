@@ -1,18 +1,21 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import axios from 'axios';
 
 class KitchenMode extends Component {
   constructor(props) {
-  super(props);
-  this.state = {
-    orders: this.props.orders,
-    status: 'inprogress',
-    currentOrders: []
+    super(props);
+    this.state = {
+      orders: this.props.orders,
+      status: 'inprogress',
+      currentOrders: []
+    };
+    this.getCurrentOrders = this.getCurrentOrders.bind(this);
+    this.completeCurrentOrder = this.completeCurrentOrder.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.submitOrder = this.submitOrder.bind(this);
   };
-  this.getCurrentOrders = this.getCurrentOrders.bind(this);
-  this.completeCurrentOrder = this.completeCurrentOrder.bind(this);
-  }
+
   getCurrentOrders() {
     axios({
       url: "http://localhost:8080/orders/current",
@@ -22,7 +25,8 @@ class KitchenMode extends Component {
         currentOrders: response.data
       });
     });
-  }
+  };
+
   completeCurrentOrder() {
     axios({
       url: "http://localhost:8080/orders/current",
@@ -33,14 +37,14 @@ class KitchenMode extends Component {
   }
   componentDidMount() {
     this.getCurrentOrders();
-  }
+  };
 
-handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     this.setState({
       status: "completed"
     }, this.submitOrder)
-  }
+  };
 
   submitOrder() {
     console.log(this.state.status);
@@ -51,7 +55,7 @@ handleSubmit(e) {
     }).then(response => {
       console.log(response)
     });
-  }
+  };
 
   render() {
     const current = this.state.currentOrders.map((el, i) => {
@@ -73,7 +77,7 @@ handleSubmit(e) {
         <ul>{current}</ul>
       </div>
     );
-  }
-}
+  };
+};
 
 export default KitchenMode;

@@ -18,7 +18,7 @@ ordersModel.getAllPastOrders = (req, res, next) => {
 
     db
        .manyOrNone(
-           "SELECT items.id, items.name, items.price, items.description, orders_items.comment FROM users JOIN orders ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.completed = 'true';"
+           "SELECT items.id, items.name, items.price, items.description, orders_items.comment FROM users JOIN orders ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.status = 'completed';"
        )
        .then(data => {
            res.locals.allPastOrders = data;
@@ -34,7 +34,7 @@ ordersModel.getAllPastOrders = (req, res, next) => {
 ordersModel.getAllCurrentOrders = (req, res, next) => {
     db
        .manyOrNone(
-           "SELECT items.id, items.name, orders_items.comment FROM users JOIN orders ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.completed = 'false';"
+           "SELECT items.id, items.name, orders_items.comment FROM users JOIN orders ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.status = 'inprogress';"
        )
        .then(data => {
            res.locals.allCurrentOrders = data;
@@ -79,7 +79,7 @@ ordersModel.update = (req, res, next) => {
   console.log(req.body);
   db
     .manyOrNone(
-      "UPDATE orders SET completed = $1 WHERE id = $2 AND user_id = $3",
+      "UPDATE orders SET status = $1 WHERE id = $2 AND user_id = $3",
       [req.body.completed, req.body.order, req.body.user]
     )
     .then(data => {

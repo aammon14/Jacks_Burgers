@@ -17,8 +17,8 @@ INSERT INTO items (category, name, price, description) VALUES
 ('Entree', 'Chicken Noodle Soup', 9.95, 'Worlds best chicken noodle soup');
 
 INSERT INTO orders (user_id, status) VALUES
-(2, TRUE),
-(2, FALSE);
+(2, 'inprogress'),
+(2, 'completed');
 
 INSERT INTO orders_items (order_id, item_id, comment) VALUES
 (1, 1, 'no ketchup plz'),

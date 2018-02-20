@@ -12,7 +12,8 @@ class Orders extends Component {
     };
     this.getPrevOrders = this.getPrevOrders.bind(this);
     console.log(this.state.prevOrders)
-  }
+  };
+
   getPrevOrders() {
     axios({
       url: "http://localhost:8080/orders/previous",
@@ -22,10 +23,12 @@ class Orders extends Component {
         prevOrders: response.data
       });
     });
-  }
+  };
+
   componentDidMount() {
     this.getPrevOrders()
-  }
+  };
+
   render(){
     const prev = this.state.prevOrders.map((el, i) => {
       return (
@@ -48,7 +51,7 @@ class Orders extends Component {
         <ul>{prev}</ul>
       </div>
     );
-  }
-}
+  };
+};
 
 export  default Orders;
