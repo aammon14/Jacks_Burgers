@@ -44,12 +44,20 @@ class Cart extends Component {
 
   render() {
     if (!(this.props.cart === [])) {
-      const total = this.props.cart.reduce(function(prev,current){
+      
+      const subtotal=this.props.cart.reduce(function(prev,current){
         return prev + current.price
       },0)
+      const nyTax=.0865
+      const tax = subtotal * nyTax
+      const total = subtotal + tax
       return (
+        <div>
+        <h2 className="category_title"> Your Cart</h2>
+        <form onSubmit={this.handleSubmit}>
         <div className="cart_container">
-          <form onSubmit={this.handleSubmit}>
+
+          
             {this.props.cart.map((el, i) => {
               return (
                 <div key={i}>
@@ -65,12 +73,18 @@ class Cart extends Component {
                 </div>
               );
             })}
-            <div className="checkout">
-            <h3 className='total'> Total  <span> ${total}</span></h3>
+            
+         
+          
+        </div>
+        <div className="checkout">
+
+            <p> Subtotal <span>${subtotal.toFixed(2)}</span></p>
+            <p> Taxes <span> ${tax.toFixed(2)} </span></p>
+            <h3 className='total'> Total  <span> ${total.toFixed(2)}</span></h3>
             <input className="submit_button" type="submit" value="submit" />
             </div>
-          </form>
-          
+         </form>
         </div>
       );
     }

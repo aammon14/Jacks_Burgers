@@ -13,6 +13,8 @@ import KitchenMode from "./Components/KitchenMode";
 import axios from "axios";
 import "./App.css";
 import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
+import Category from './Components/Category'
+
 
 class App extends Component {
   constructor(props) {
@@ -123,6 +125,8 @@ class App extends Component {
               render={props => {
                 return (
                   <div className="items_page">
+                  
+                    <Category items={this.state.items}/>
                     <Menu
                      {...props}
                      items={this.state.items}
@@ -267,21 +271,8 @@ class App extends Component {
                 );
               }}
             />
-             <Route
-              exact 
-              path="/Appetizers"
-              render={props => {
-                return (
-                  <Menu
-                    {...props}
-                    users={this.state.users}
-                    getAllUser={this.getAllUser}
-                    items={this.state.items}
-                  />
-                );
-              }}
-            />
           </Switch>
+
         </div>
       </BrowserRouter>
     );
