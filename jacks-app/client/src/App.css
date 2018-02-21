@@ -194,4 +194,8 @@ width: 45vw;
   color: white;
   border-color: #03a9f4;
 }
+.nav_bar {
+  background-color: red;
+  width: 70vw;
+}
 

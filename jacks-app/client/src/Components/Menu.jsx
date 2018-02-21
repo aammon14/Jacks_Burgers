@@ -101,6 +101,7 @@ toggleEntrees(){
   render() {
     return (
       <div>
+      <div className= 'nav_bar'>none</div>
         <div className="menu_container">
           {this.props.items.map((el, i) => {
             return (
