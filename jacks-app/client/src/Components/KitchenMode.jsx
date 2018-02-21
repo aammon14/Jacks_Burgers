@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import KitchenCurrentItems from './KitchenCurrentItems'
 
 class KitchenMode extends Component {
   constructor(props) {
@@ -9,8 +10,8 @@ class KitchenMode extends Component {
       order: 0,
       status: 'inprogress',
       currentOrders: [],
-      currentOrdersItem: [],
-      user: 1
+      currentOrdersItems: [],
+      user: this.props.state.user
     };
     this.getCurrentOrders = this.getCurrentOrders.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,20 +30,35 @@ class KitchenMode extends Component {
     });
   };
 
-  componentDidMount() {
-    this.getCurrentOrders();
+  getCurrentOrdersItems() {
+    axios({
+      url: "http://localhost:8080/orders/currentitem",
+      method: "get"
+    }).then(response => {
+      this.setState({
+        currentOrdersItems: response.data
+      });
+      console.log('in getCurrentOrdersItems currentOrdersItems: ', response.data)
+    });
   };
 
-  handleSubmit(id) {
+  componentDidMount() {
+    this.getCurrentOrders();
+    this.getCurrentOrdersItems();
+
+  };
+
+  handleSubmit(id, user_id) {
     this.setState({
       status: "completed",
-      order: id
+      order: id,
+      user: user_id
     }, this.submitOrder)
   };
 
   submitOrder() {
     console.log('in submit order, this.state.currentOrders: ', this.state.currentOrders)
-    console.log(this.state);
+    console.log('in submitOrder, this.state: ', this.state);
     axios({
       url: "http://localhost:8080/orders/",
       method: "PUT",
@@ -63,13 +79,21 @@ class KitchenMode extends Component {
             <p>Status: {el.status}</p>
           <div>
           </div>
+            {this.state.currentOrdersItems.map((item, i) => {
+              if (item.order_id == el.id) {
+              return (
+                <p key={i}>Items: {item.name} {item.order_id}</p>  
+              ) 
+              }
+            })}
           </div>
           <div className='prevOrderButtonDiv'>
-            <button value={el.id} onClick={this.handleSubmit.bind(this, el.id)} className='orderAgainButton'>Mark Order {el.id} Complete</button>
+            <button value={el.id} onClick={this.handleSubmit.bind(this, el.id, el.user_id)} className='orderAgainButton'>Mark Order {el.id} Complete</button>
           </div>
         </li>
       )
     })
+
     return(
       <div className='prevOrderDiv'>
         <Link to='/items'>Back to Menu</Link>

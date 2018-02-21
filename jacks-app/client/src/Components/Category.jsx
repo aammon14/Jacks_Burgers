@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
-import Menu from "./Menu";
+// import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
+//import Menu from "./Menu";
 import Scrollchor from 'react-scrollchor';
 
 
 class Category extends Component {
-  constructor(props){
-    super(props)
-  }
+  // constructor(props){
+  //   super(props)
+  // }
 
 
   render() {

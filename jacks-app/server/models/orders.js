@@ -33,10 +33,26 @@ ordersModel.getAllPastOrders = (req, res, next) => {
 ordersModel.getAllCurrentOrders = (req, res, next) => {
     db
       .manyOrNone(
-        "SELECT orders.id, orders.status, users.username FROM orders JOIN users ON orders.user_id = users.id WHERE status = 'inprogress';"
+        "SELECT orders.id, orders.status, users.username, orders.user_id FROM orders JOIN users ON orders.user_id = users.id WHERE status = 'inprogress';"
       )
        .then(data => {
            res.locals.allCurrentOrders = data;
+           next();
+       })
+       .catch(error => {
+           console.log("error encountered in ordersModel.getAllPastOrders:", error);
+           next(error);
+       });
+};
+
+ordersModel.getAllCurrentOrdersItems = (req, res, next) => {
+  console.log('in ordersModel.getAllCurrentOrdersItems, req.params: ', req.params);
+    db
+      .manyOrNone(
+        "SELECT items.name, items.price, items.description, orders_items.comment, orders_items.order_id FROM users JOIN orders ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.status = 'inprogress';"
+      )
+       .then(data => {
+           res.locals.allCurrentOrdersItems = data;
            next();
        })
        .catch(error => {

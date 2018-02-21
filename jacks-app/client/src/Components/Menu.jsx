@@ -5,12 +5,12 @@ import React, { Component } from "react";
 
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import { Modal } from "react-bootstrap";
-import Cart from "./Cart";
-import Item from "./Item";
-import Appetizers from "./Appetizers";
-import Entrees from "./Entrees";
+// import { Button } from "react-bootstrap";
+// import { Modal } from "react-bootstrap";
+// import Cart from "./Cart";
+// import Item from "./Item";
+// import Appetizers from "./Appetizers";
+// import Entrees from "./Entrees";
 
 
 class Menu extends Component {

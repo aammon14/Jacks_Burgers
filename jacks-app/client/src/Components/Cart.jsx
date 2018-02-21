@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 
@@ -10,7 +10,8 @@ class Cart extends Component {
     this.state = {
       order: props.state.order,
       user: 1,
-      completed: "false"
+      status: "cart",
+      total: null
 
     };
 
@@ -20,10 +21,12 @@ class Cart extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({
-      completed: "Cash"
-    });
-    this.submitOrder();
+    this.setState(
+      {
+        status: "inprogress"
+      },
+      this.submitOrder
+    );
   }
 
   submitOrder() {
@@ -44,10 +47,9 @@ class Cart extends Component {
 
   render() {
     if (!(this.props.cart === [])) {
-      
       const subtotal=this.props.cart.reduce(function(prev,current){
         return prev + current.price
-      },0)
+      }, 0)
       const nyTax=.0865
       const tax = subtotal * nyTax
       const total = subtotal + tax
