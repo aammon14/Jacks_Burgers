@@ -16,8 +16,8 @@ router.get("/username", usersModel.findByUsername, (req, res, next) => {
     res.json(res.locals.userData);
 });
 
-router.post("/:id", usersModel.create, (req, res, next) => {
-    res.json(res.locals.newUserData);
+router.post("/", usersModel.create, (req, res, next) => {
+    res.json(res.locals.newUserId);
 });
 
 module.exports = router;

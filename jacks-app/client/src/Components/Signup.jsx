@@ -7,14 +7,12 @@ class Signup extends Component {
 
     this.state = {
       username: "",
-      password: "",
-      actualpassword: ""
+      password: ""
     };
 
-    this.getUser = this.getUser.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.checkCredentials = this.checkCredentials.bind(this);
+    this.createUser = this.createUser.bind(this);
   }
 
   handleChange(event) {
@@ -29,27 +27,19 @@ class Signup extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.getUser();
+    this.createUser();
   }
 
-  getUser() {
+  createUser() {
     axios({
-      url: `localhost:3000/users/${this.state.username}`,
-      method: "get"
+      url: "http://localhost:8080/users",
+      method: "POST",
+      data: this.state
     }).then(response => {
-      this.setState({
-        actualpassword: response.data
-      });
-      this.checkCredentials();
+      this.props.changeUserState(response.data);
+      this.props.history.push("/");
+      console.log(this.props.state.user);
     });
-  }
-
-  checkCredentials() {
-    if (this.state.actualpassword === this.state.password) {
-      this.props.history.push("/items");
-    } else {
-      this.props.history.push("/signin");
-    }
   }
 
   render() {

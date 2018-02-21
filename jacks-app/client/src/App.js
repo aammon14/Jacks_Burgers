@@ -19,7 +19,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      users: {},
+      user: null,
       items: [],
       cart: [],
       orders: [],
@@ -32,6 +32,7 @@ class App extends Component {
     this.getAllOrders = this.getAllOrders.bind(this);
     this.changeOrderState = this.changeOrderState.bind(this);
     this.changeCartState = this.changeCartState.bind(this);
+    this.changeUserState = this.changeUserState.bind(this);
     this.getCart = this.getCart.bind(this);
   }
 
@@ -107,6 +108,10 @@ class App extends Component {
 
   changeCartState(cart) {
     this.setState({ cart: cart });
+  }
+
+  changeUserState(user) {
+    this.setState({ user: user });
   }
 
   render() {
@@ -244,8 +249,9 @@ class App extends Component {
                 return (
                   <Signup
                     {...props}
-                    users={this.state.users}
+                    state={this.state}
                     getAllUser={this.getAllUser}
+                    changeUserState={this.changeUserState}
                   />
                 );
               }}
@@ -258,6 +264,7 @@ class App extends Component {
                     {...props}
                     users={this.state.users}
                     getAllUser={this.getAllUser}
+                    changeUserState={this.changeUserState}
                   />
                 );
               }}
