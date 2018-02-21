@@ -140,7 +140,6 @@ class App extends Component {
                      state={this.state}
                      getCart={this.getCart}
                      addItemToCart={this.addItemToCart}
-
                    />
                     <Cart
                       {...props}
@@ -150,12 +149,13 @@ class App extends Component {
                       changeOrderState={this.changeOrderState.bind(this)}
                       changeCartState={this.changeCartState.bind(this)}
                     />
-                    <Link to='/orders'>View Previous Orders</Link>
-                    <Link to='/kitchen'>View Kitchen</Link>
+                    <Link to='/orders'>Previous Orders</Link>
+                    <Link to='/kitchen'>Kitchen Orders</Link>
                   </div>
                 );
               }}
             />
+
             <Route
               exact
               path="/items/:id"
@@ -169,6 +169,8 @@ class App extends Component {
                     getAllItems={this.getAllItems}
                     addItemToCart={this.addItemToCart}
                     getCart={this.getCart}
+                     orders={this.state.orders}
+
                   />
                 );
               }}

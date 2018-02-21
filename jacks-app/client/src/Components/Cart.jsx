@@ -56,8 +56,7 @@ class Cart extends Component {
         <h2 className="category_title"> Your Cart</h2>
         <form onSubmit={this.handleSubmit}>
         <div className="cart_container">
-
-          
+          <h1> Your Order </h1>
             {this.props.cart.map((el, i) => {
               return (
                 <div key={i}>
@@ -68,14 +67,10 @@ class Cart extends Component {
                     <h1 className="cart_item_name">{el.name} ${el.price}</h1>
                     <p>{el.description}</p>
                     <p>Comment: {el.comment}</p>
-                  
                   </Link>
                 </div>
               );
-            })}
-            
-         
-          
+            })}  
         </div>
         <div className="checkout">
 
