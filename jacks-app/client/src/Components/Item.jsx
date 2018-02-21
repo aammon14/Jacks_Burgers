@@ -11,7 +11,6 @@ class Item extends Component {
       user: 1,
       comment: ""
     };
-
     this.getItem = this.getItem.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);

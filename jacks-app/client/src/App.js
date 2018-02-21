@@ -23,7 +23,7 @@ class App extends Component {
       items: [],
       cart: [],
       orders: [],
-      order: 0,
+      order: 1,
       hasData: false
     };
 
@@ -36,7 +36,6 @@ class App extends Component {
   }
 
   // Item Calls
-
   getAllItems() {
     axios({
       url: "http://localhost:8080/items",
@@ -62,8 +61,8 @@ class App extends Component {
       // console.log(users);
     });
   }
-  // Order Calls
 
+  // Order Calls
   getAllOrders() {
     axios({
       url: "http://localhost:8080/orders",
@@ -77,7 +76,6 @@ class App extends Component {
   }
 
   // Checkout Cart Calls
-
   getCart() {
     axios({
       url: `http://localhost:8080/cart/${this.state.order}`,
@@ -137,6 +135,7 @@ class App extends Component {
                       changeCartState={this.changeCartState.bind(this)}
                     />
                     <Link to='/orders'>View Previous Orders</Link>
+                    <Link to='/kitchen'>View Kitchen</Link>
                   </div>
                 );
               }}
@@ -230,7 +229,11 @@ class App extends Component {
               path="/kitchen"
               render={props => {
                 return (
-                  <KitchenMode />
+                  <KitchenMode
+                    {...props}
+                    state={this.state} 
+                    changeOrderState={this.changeOrderState.bind(this)}
+                  />
                 );
               }}
             />
