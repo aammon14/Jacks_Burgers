@@ -105,17 +105,13 @@ toggleEntrees(){
 
   render() {
     return (
-<<<<<<< HEAD
-=======
       <div>
       <div className= 'nav_bar'>none</div>
->>>>>>> ab4c5624ffcc315424c4f8c0f4ec1cd29978964a
         <div className="menu_container">
       <div>
       
          <h2 className="Menu_title" id="Appetizers">Appetizers</h2>
           {this.props.items.map((el, i) => {
-<<<<<<< HEAD
             if(el.category==="Appetizers"){
               return (
               <div className="item_div" key={i}>
@@ -124,20 +120,7 @@ toggleEntrees(){
                   <p className="item_description">{el.description}</p>
                   <p className="item_price">${el.price}</p>
                 </Link>
-=======
-            return (
-              <div
-                className="item_div"
-                key={i}
-                onClick={() => {
-                  console.log("i was clicked");
-                  this.setState({ show: true, item: el });
-                }}
-              >
-                <h1 className="item_name">{el.name}</h1>
-                <p className="item_description">{el.description}</p>
-                <p className="item_price">{el.price}</p>
->>>>>>> ab4c5624ffcc315424c4f8c0f4ec1cd29978964a
+
               </div>
             )};
           })}
@@ -156,64 +139,7 @@ toggleEntrees(){
             )};
           })}
         </div>
-<<<<<<< HEAD
-
-=======
-        <div className="menu_container">
-          <div className="item_div" onClick={this.showAppetizers}>
-            Appetizers
-          </div>
-
-          {this.state.viewAppetizers ? (
-            <Appetizers items={this.props.items} />
-          ) : null}
-
-          <div className="item_div" onClick={this.toggleEntrees}>
-            Entrees
-          </div>
-
-          {this.state.viewEntrees ? <Entrees items={this.props.items} /> : null}
-        </div>
-        <div className="modal-container">
-          <div>
-            <Modal
-              show={this.state.show}
-              onHide={this.handleHide}
-              container={this}
-              aria-labelledby="contained-modal-title"
-            >
-              <Modal.Body className="item_container ">
-                <div>
-                  <form onSubmit={this.handleSubmit}>
-                    <h1 className="item_specific_name">
-                      {this.state.item.name}
-                    </h1>
-                    <p className="item_specific_description">
-                      {this.state.item.description}
-                    </p>
-                    <textarea
-                      className="comment"
-                      type="text"
-                      placeholder="No Salt, Please!"
-                      value={this.state.comment}
-                      onChange={this.handleChange}
-                    />
-                    <p className="item_specific_price">
-                      {this.state.item.price}
-                    </p>
-                    <input
-                      className="add_to_cart_button"
-                      type="submit"
-                      name="Submit"
-                      value="ADD TO CART"
-                    />
-                  </form>
-                </div>
-              </Modal.Body>
-            </Modal>
-          </div>
-        </div>
->>>>>>> ab4c5624ffcc315424c4f8c0f4ec1cd29978964a
+      </div>
       </div>
     );
   }

@@ -98,13 +98,8 @@
   justify-content: center;
   flex-direction: column;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
   margin: 15px;
-
-=======
-  margin: 15px auto;
   text-align: center;
->>>>>>> ab4c5624ffcc315424c4f8c0f4ec1cd29978964a
 }
 
 .item_div:hover {
