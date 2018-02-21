@@ -26,6 +26,8 @@
     "express": "^4.16.2",
     "morgan": "^1.9.0",
     "mustache-express": "^1.2.5",
-    "pg-promise": "^7.5.3"
+    "pg-promise": "^7.5.3",
+    "react-bootstrap": "^0.32.1",
+    "react-scrollchor": "^4.2.1"
   }
 }
