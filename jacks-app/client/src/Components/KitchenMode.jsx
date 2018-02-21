@@ -6,11 +6,9 @@ class KitchenMode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      order: 0,
       status: 'inprogress',
       currentOrders: [],
       currentOrdersItems: [],
-      user: this.props.state.user
     };
     this.getCurrentOrders = this.getCurrentOrders.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -72,31 +70,28 @@ class KitchenMode extends Component {
     const current = this.state.currentOrders.map((el, i) => {
       return (
         <li className='currOrderItem' key={i}>
-          <div className='prevOrderText'>
-            <p>Order Number: {el.id}</p>
-            <p>Order for: {el.username}</p>
-            <p>Status: {el.status}</p>
+          <div className='currOrderText'>
+            <p><em>Order {el.id}, for {el.username}:</em></p>
           <div>
           </div>
             {this.state.currentOrdersItems.map((item, i) => {
               if (item.order_id == el.id) {
-              return (
-                <p key={i}>Items: {item.name} {item.order_id}</p>  
-              ) 
+                return (
+                  <p key={i} className='currItem'><input id="checkBox" type="checkbox" /><b>{item.name}</b>, {item.comment}</p>  
+                ) 
               }
             })}
           </div>
-          <div className='prevOrderButtonDiv'>
-            <button value={el.id} onClick={this.handleSubmit.bind(this, el.id, el.user_id)} className='orderAgainButton'>Mark Order {el.id} Complete</button>
+          <div className='currOrderButtonDiv'>
+            <button value={el.id} onClick={this.handleSubmit.bind(this, el.id, el.user_id)} className='orderCompleteButton'>Mark Order {el.id} Complete</button>
           </div>
         </li>
       )
     })
-
     return(
-      <div className='prevOrderDiv'>
+      <div className='currentOrderDiv'>
         <Link to='/items'>Back to Menu</Link>
-        <h1>Current Orders</h1>
+        <h1><em>Current Orders</em></h1>
         <ul>{current}</ul>
       </div>
     );

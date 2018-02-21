@@ -279,6 +279,67 @@ width: 45vw;
   margin: 0 0 auto auto;
   width: 250px;
 }
+
+
+/*current orders styling:*/
+.currentOrderDiv {
+  font-family: avenir;
+  padding: 0 5px 5px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+  margin: 5px;
+  background: #03a9f4;
+  text-align: center;
+}
+.currentOrderDiv, h1 {
+  margin: 5px;
+  color: white;
+}
+.currOrderItem {
+  padding: 0 5px 5px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+  margin: 5px;
+  width: 85%;
+  color: black;
+}
+.currOrderText {
+  width: 60%;
+  padding: 5px;
+}
+.currOrderText, p {
+  margin: 0;
+  font-size: 15px;
+  text-align: left;
+}
+.currItem {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+}
+.currOrderButtonDiv {
+  margin: 0 20px auto auto;
+  padding: 0 auto;
+  width: 40%;
+  height: 100%;
+}
+.orderCompleteButton {
+  float: right;
+  font-family: avenir;
+  font-size: 15px;
+  height: 50px;
+  width: 300px;
+  margin: 20px;
+  border-radius: 40px;
+  background-color: #03a9f4;
+  color: white;
+  border-color: black;
+}
+/*end of current orders styling*/
+
 .orderAgainButton {
   position: relative;
   float: right;
@@ -293,18 +354,7 @@ width: 45vw;
   border-color: #03a9f4;
   columns: 2;
 }
-.currOrderItem {
-  font-family: avenir;
-  padding: 0 5px 5px;
-  width: 600px;
-  background-color: white;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
-  list-style: none;
-  margin: 5px;
-}
+
 .nav_bar {
   background-color: red;
   width: 70vw;
