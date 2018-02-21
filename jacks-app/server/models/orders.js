@@ -15,7 +15,6 @@ ordersModel.allOrders = (req, res, next) => {
 };
 
 ordersModel.getAllPastOrders = (req, res, next) => {
-
     db
        .manyOrNone(
            "SELECT items.id, items.name, items.price, items.description, orders_items.comment FROM users JOIN orders ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.status = 'completed';"
@@ -34,7 +33,7 @@ ordersModel.getAllPastOrders = (req, res, next) => {
 ordersModel.getAllCurrentOrders = (req, res, next) => {
     db
       .manyOrNone(
-        "SELECT orders.id, orders.status, users.username, items.name, orders_items.comment FROM orders JOIN users ON orders.user_id = users.id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE status = 'inprogress';"
+        "SELECT orders.id, orders.status, users.username FROM orders JOIN users ON orders.user_id = users.id WHERE status = 'inprogress';"
       )
        .then(data => {
            res.locals.allCurrentOrders = data;
@@ -44,19 +43,6 @@ ordersModel.getAllCurrentOrders = (req, res, next) => {
            console.log("error encountered in ordersModel.getAllPastOrders:", error);
            next(error);
        });
-};
-
-ordersModel.getCurrentOrderItems = (req, res, next) => {
-  db
-    .manyOrNone(
-      "SELECT orders_items.order_id, items.name, orders_items.comment FROM orders JOIN users ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.status = 'inprogress';"
-    )
-    .then(data => {
-      res.locals.currentOrderItem = data;
-    })
-    .catch(error => {
-      console.log("error encountered in ordersModel.getCurrentOrderItems:", error);
-    });
 };
 
 ordersModel.findById = (req, res, next) => {

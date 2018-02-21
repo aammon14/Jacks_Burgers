@@ -9,10 +9,10 @@ class KitchenMode extends Component {
       order: 0,
       status: 'inprogress',
       currentOrders: [],
+      currentOrdersItem: [],
       user: 1
     };
     this.getCurrentOrders = this.getCurrentOrders.bind(this);
-    this.getCurrentOrdersItems = this.getCurrentOrdersItems.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submitOrder = this.submitOrder.bind(this);
   };
@@ -26,17 +26,6 @@ class KitchenMode extends Component {
         currentOrders: response.data
       });
       console.log('in getCurrentOrders currentOrders: ', response.data)
-    });
-  };
-
-  getCurrentOrdersItems() {
-    axios({
-      url: "http://localhost:8080/orders/currentitem",
-      method: "get"
-    }).then(response => {
-      this.setState({
-        currentOrdersItem: response.data
-      });
     });
   };
 
@@ -72,6 +61,8 @@ class KitchenMode extends Component {
             <p>Order Number: {el.id}</p>
             <p>Order for: {el.username}</p>
             <p>Status: {el.status}</p>
+          <div>
+          </div>
           </div>
           <div className='prevOrderButtonDiv'>
             <button value={el.id} onClick={this.handleSubmit.bind(this, el.id)} className='orderAgainButton'>Mark Order {el.id} Complete</button>

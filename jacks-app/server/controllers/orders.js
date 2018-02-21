@@ -14,10 +14,6 @@ router.get("/current", ordersModel.getAllCurrentOrders, (req, res, next) => {
     res.json(res.locals.allCurrentOrders);
 });
 
-router.get("/currentitem", ordersModel.getCurrentOrderItems, (req, res, next) => {
-    res.json(res.locals.allCurrentOrders);
-});
-
 router.get("/:id", ordersModel.findById, (req, res, next) => {
     res.json(res.locals.orderData);
 });
