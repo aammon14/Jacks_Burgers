@@ -14,6 +14,7 @@ import axios from "axios";
 import "./App.css";
 import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
 import Category from './Components/Category'
+import Navbar from "./Components/Navbar";
 
 
 class App extends Component {
@@ -127,8 +128,9 @@ class App extends Component {
               path="/items"
               render={props => {
                 return (
-                  <div className="items_page">
-                  
+                  <div >
+                    <Navbar />
+                    <div className="items_page">
                     <Category items={this.state.items}/>
                     <Menu
                      {...props}
@@ -149,8 +151,7 @@ class App extends Component {
                       changeOrderState={this.changeOrderState.bind(this)}
                       changeCartState={this.changeCartState.bind(this)}
                     />
-                    <Link to='/orders'>Previous Orders</Link>
-                    <Link to='/kitchen'>Kitchen Orders</Link>
+                    </div>
                   </div>
                 );
               }}

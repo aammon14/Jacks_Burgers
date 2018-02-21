@@ -52,21 +52,19 @@ class Cart extends Component {
       const tax = subtotal * nyTax
       const total = subtotal + tax
       return (
-        <div>
-        <h2 className="category_title"> Your Cart</h2>
-        <form onSubmit={this.handleSubmit}>
         <div className="cart_container">
-          <h1> Your Order </h1>
+        <h2 className="category_title"> Your Cart</h2>
+        <div>
+        <form onSubmit={this.handleSubmit}>
+        <div className="cart_items">
+         
             {this.props.cart.map((el, i) => {
               return (
-                <div key={i}>
+                <div key={i}  className="cart_item_div_content">
                   <Link
-                    className="cart_item_div_content"
                     to={`/items/${el.id}`}
                   >
-                    <h1 className="cart_item_name">{el.name} ${el.price}</h1>
-                    <p>{el.description}</p>
-                    <p>Comment: {el.comment}</p>
+                    <h2 className="cart_item_name">{el.name} ${el.price}</h2>
                   </Link>
                 </div>
               );
@@ -74,12 +72,17 @@ class Cart extends Component {
         </div>
         <div className="checkout">
 
-            <p> Subtotal <span>${subtotal.toFixed(2)}</span></p>
-            <p> Taxes <span> ${tax.toFixed(2)} </span></p>
-            <h3 className='total'> Total  <span> ${total.toFixed(2)}</span></h3>
+            <p> Subtotal <span>${subtotal.toFixed(2)}</span>
+             <hr className="line" /></p>
+           
+            <p> Taxes <span className="right"> ${tax.toFixed(2)} </span><hr  className="line"/></p>
+            
+            <h3 className='total'> Total  <span> ${total.toFixed(2)}</span> <hr  className="line"/></h3>
+           
             <input className="submit_button" type="submit" value="submit" />
-            </div>
+        </div>
          </form>
+         </div>
         </div>
       );
     }
