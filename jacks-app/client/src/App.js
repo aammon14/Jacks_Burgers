@@ -129,6 +129,7 @@ class App extends Component {
               render={props => {
                 return (
                   <div >
+
                     <Navbar />
                     <div className="items_page">
                     <Category items={this.state.items}/>

@@ -52,9 +52,12 @@ class Cart extends Component {
       const tax = subtotal * nyTax
       const total = subtotal + tax
       return (
+   
         <div className="cart_container">
+              <div className="category_Menu_title">
+
         <h2 className="category_title"> Your Cart</h2>
-        <div>
+        </div>
         <form onSubmit={this.handleSubmit}>
         <div className="cart_items">
          
@@ -83,7 +86,8 @@ class Cart extends Component {
         </div>
          </form>
          </div>
-        </div>
+  
+        
       );
     }
   }
