@@ -120,9 +120,9 @@ toggleEntrees(){
               return (
               <div className="item_div" key={i}>
                 <Link className="item_div_content" to={`/items/${el.id}`}> 
-                  <h1 className="item_name">{el.name}</h1></Link>
+                  <h1 className="item_name">{el.name}</h1>
                   <p className="item_description">{el.description}</p>
-                  <p className="item_price">${el.price}</p>
+                  <p className="item_price">${el.price}</p></Link>
                
 
               </div>
