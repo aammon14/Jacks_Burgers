@@ -22,11 +22,10 @@ class App extends Component {
     super(props);
 
     this.state = {
-      user: null,
+      user: [],
       items: [],
       cart: [],
-      orders: [],
-      order: 1,
+      order: 0,
       hasData: false,
       categories: []
     };
@@ -174,7 +173,6 @@ class App extends Component {
                     getAllItems={this.getAllItems}
                     addItemToCart={this.addItemToCart}
                     getCart={this.getCart}
-                    orders={this.state.orders}
                   />
                 );
               }}

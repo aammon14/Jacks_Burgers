@@ -10,17 +10,25 @@ router.get("/previous", ordersModel.getAllPastOrders, (req, res, next) => {
     res.json(res.locals.allPastOrders);
 });
 
-router.get("/previousitem", ordersModel.getAllPrevOrdersItems, (req, res, next) => {
-    res.json(res.locals.allPrevOrdersItems);
-});
+router.get(
+    "/previousitem",
+    ordersModel.getAllPrevOrdersItems,
+    (req, res, next) => {
+        res.json(res.locals.allPrevOrdersItems);
+    }
+);
 
 router.get("/current", ordersModel.getAllCurrentOrders, (req, res, next) => {
     res.json(res.locals.allCurrentOrders);
 });
 
-router.get("/currentitem", ordersModel.getAllCurrentOrdersItems, (req, res, next) => {
-    res.json(res.locals.allCurrentOrdersItems);
-});
+router.get(
+    "/currentitem",
+    ordersModel.getAllCurrentOrdersItems,
+    (req, res, next) => {
+        res.json(res.locals.allCurrentOrdersItems);
+    }
+);
 
 router.get("/:id", ordersModel.findById, (req, res, next) => {
     res.json(res.locals.orderData);

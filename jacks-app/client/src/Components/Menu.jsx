@@ -11,31 +11,8 @@ class Menu extends Component {
     this.state = {
       item: {},
       order: this.props.state.order,
-      user: 1,
-      comment: ""
+      user: this.props.state.user
     };
-
-    this.createOrder = this.createOrder.bind(this);
-  }
-
-  componentDidMount() {
-    if (this.props.state.order === 0) {
-      this.createOrder(this.state.user);
-    }
-  }
-
-  // Create A New Order
-
-  createOrder(user_id) {
-    axios({
-      url: `http://localhost:8080/orders/${user_id}`,
-      method: "post"
-    }).then(response => {
-      this.props.changeOrderState(response.data.id);
-      this.setState({
-        order: this.props.state.order
-      });
-    });
   }
 
   render() {

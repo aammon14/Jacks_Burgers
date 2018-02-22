@@ -9,12 +9,16 @@ class Cart extends Component {
     this.state = {
       order: this.props.state.order,
       total: null,
-      user: this.props.state.user,
-      status: "cart"
+      user: this.props.state.user.id,
+      status: ""
     };
 
-    this.submitOrder = this.submitOrder.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.submitOrder = this.submitOrder.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getCart(this.props.state.order);
   }
 
   handleSubmit(e) {
@@ -28,7 +32,7 @@ class Cart extends Component {
   }
 
   submitOrder() {
-    console.log(this.state.completed);
+    console.log(this.state.status);
     axios({
       url: "http://localhost:8080/orders",
       method: "PUT",
@@ -37,10 +41,6 @@ class Cart extends Component {
       this.props.changeOrderState(0);
       this.props.changeCartState([]);
     });
-  }
-
-  componentDidMount() {
-    this.props.getCart(this.props.state.order);
   }
 
   render() {
@@ -58,11 +58,8 @@ class Cart extends Component {
             <h1> Your Order </h1>
             {this.props.cart.map((el, i) => {
               return (
-                <div key={i}  className="cart_item_div_content">
-                  <Link
-                    to={`/items/${el.id}`}
-                  >
-
+                <div key={i} className="cart_item_div_content">
+                  <Link to={`/items/${el.id}`}>
                     <h1 className="cart_item_name">
                       {el.name} ${el.price}
                     </h1>
