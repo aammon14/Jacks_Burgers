@@ -8,14 +8,14 @@ class Item extends Component {
     this.state = {
       item: {},
       order: this.props.state.order,
-      user: 1,
+      user: 1
     };
     this.getItem = this.getItem.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.createOrder = this.createOrder.bind(this);
     this.addItem = this.addItem.bind(this);
-  }
+     }
 
   getItem() {
     axios({
@@ -72,13 +72,14 @@ class Item extends Component {
 
   render() {
     return (
-      <div>
-        <div className="item_container">
-          <form onSubmit={this.handleSubmit}>
+      <div className="item_container">
+        <div className="individual_item">
+          <form className="form" onSubmit={this.handleSubmit}>
             <h1 className="item_specific_name">{this.state.item.name}</h1>
             <p className="item_specific_description">
               {this.state.item.description}
             </p>
+            <b><p className="special_instruction" >special Instructions</p></b>
             <textarea
               className="comment"
               type="text"
@@ -86,7 +87,7 @@ class Item extends Component {
               value={this.state.comment}
               onChange={this.handleChange}
             />
-            <p className="item_specific_price">{this.state.item.price}</p>
+            <p className="item_specific_price">${this.state.item.price}</p>
             <input
               className="add_to_cart_button"
               type="submit"

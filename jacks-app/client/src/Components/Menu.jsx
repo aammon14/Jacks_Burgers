@@ -24,7 +24,9 @@ class Menu extends Component {
       comment: "",
       show: false,
       viewAppetizers: false,
-      viewEntrees:false
+      viewEntrees:false,
+      open: false
+
     };
 
     // this.getItem = this.getItem.bind(this);
@@ -33,9 +35,22 @@ class Menu extends Component {
     this.createOrder = this.createOrder.bind(this);
     this.addItem = this.addItem.bind(this);
     this.handleHide = this.handleHide.bind(this);
-    this.showAppetizers=this.showAppetizers.bind(this)
-    this.toggleEntrees=this.toggleEntrees.bind(this)
+    this.showAppetizers=this.showAppetizers.bind(this);
+    this.toggleEntrees=this.toggleEntrees.bind(this);
+    // this.onOpenModal=this.onOpenModal(this);
+    // this.onCloseModal=this.onCloseModal(this);
   }
+  //     onOpenModal = () => {
+  //   this.setState({ open: true });
+  // };
+  onOpenModal() {
+   this.setState({ open: true }); 
+  }
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+
   handleHide() {
     this.setState({ show: false, item: {} });
   }
@@ -112,7 +127,7 @@ toggleEntrees(){
     <h2>Fresher.Tastier.Better.</h2>
     </div>
   </div>
-   <div className="menu_container">
+   <div className="menu_container" onClick={this.onOpenModal}>
 
          <h2 className="Menu_title" id="Appetizers">Appetizers</h2>
           {this.props.items.map((el, i) => {
