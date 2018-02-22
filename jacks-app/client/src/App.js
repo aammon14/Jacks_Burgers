@@ -152,10 +152,6 @@ class App extends Component {
                         changeCartState={this.changeCartState.bind(this)}
                       />
                     </div>
-                    <Link to="/orders">Previous Orders</Link>
-                    <Link to="/kitchen">Kitchen Orders</Link>
-                    <Link to="/Menu_Maintenance">Menu_Maintenance</Link>
-                    <Link to="/users/profile">Profile</Link>
                   </div>
                 );
               }}

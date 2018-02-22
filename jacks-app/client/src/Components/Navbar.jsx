@@ -9,6 +9,8 @@ return(
   <div className="nav_links"><Link to='/Signup'>Sign up</Link></div>
   <div className="nav_links"><Link to='/orders'>Previous Orders</Link></div>
   <div className="nav_links"><Link to='/kitchen'>Kitchen Orders</Link></div>
+  <Link to="/Menu_Maintenance">Menu_Maintenance</Link>
+  <Link to="/users/profile">Profile</Link>
  </div>
 
 )}}
