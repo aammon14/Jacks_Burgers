@@ -23,7 +23,7 @@ class PreviousOrders extends Component {
       this.setState({
         prevOrders: response.data
       });
-      console.log('in getPrevOrders prevOrders: ', response.data)
+      console.log('in getPrevOrders prevOrders: ', response.data, )
     });
   };
 
