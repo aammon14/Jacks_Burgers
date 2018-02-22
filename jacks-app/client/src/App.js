@@ -154,6 +154,7 @@ class App extends Component {
                     </div>
                     <Link to="/orders">Previous Orders</Link>
                     <Link to="/kitchen">Kitchen Orders</Link>
+                    <Link to="/Menu_Maintenance">Menu_Maintenance</Link>
                   </div>
                 );
               }}
