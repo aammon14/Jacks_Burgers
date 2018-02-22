@@ -11,6 +11,7 @@ class KitchenMode extends Component {
       currentOrdersItems: [],
     };
     this.getCurrentOrders = this.getCurrentOrders.bind(this);
+    this.getCurrentOrdersItems = this.getCurrentOrdersItems.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submitOrder = this.submitOrder.bind(this);
   };
@@ -23,7 +24,7 @@ class KitchenMode extends Component {
       this.setState({
         currentOrders: response.data
       });
-      console.log('in getCurrentOrders currentOrders: ', response.data)
+      // console.log('in getCurrentOrders currentOrders: ', response.data)
     });
   };
 
@@ -35,7 +36,7 @@ class KitchenMode extends Component {
       this.setState({
         currentOrdersItems: response.data
       });
-      console.log('in getCurrentOrdersItems currentOrdersItems: ', response.data)
+      // console.log('in getCurrentOrdersItems currentOrdersItems: ', response.data)
     });
   };
 
@@ -72,12 +73,11 @@ class KitchenMode extends Component {
         <li className='currOrderItem' key={i}>
           <div className='currOrderText'>
             <p><em>Order {el.id}, for {el.username}:</em></p>
-          <div>
-          </div>
             {this.state.currentOrdersItems.map((item, i) => {
               if (item.order_id == el.id) {
                 return (
-                  <p key={i} className='currItem'><input id="checkBox" type="checkbox" /><b>{item.name}</b>, {item.comment}</p>  
+                  <p key={i} className='currItem'><input id="checkBox" type="checkbox" /><b>{item.name}</b>, {item.comment}
+                  </p>  
                 ) 
               }
             })}

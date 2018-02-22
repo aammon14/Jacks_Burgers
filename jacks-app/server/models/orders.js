@@ -17,7 +17,7 @@ ordersModel.allOrders = (req, res, next) => {
 ordersModel.getAllPastOrders = (req, res, next) => {
     db
        .manyOrNone(
-           "SELECT items.id, items.name, items.price, items.description, orders_items.comment FROM users JOIN orders ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.status = 'completed';"
+          "SELECT orders.id, orders.status, users.username, orders.user_id FROM orders JOIN users ON orders.user_id = users.id WHERE status = 'completed' ORDER BY orders.id DESC LIMIT 5"
        )
        .then(data => {
            res.locals.allPastOrders = data;
@@ -27,13 +27,27 @@ ordersModel.getAllPastOrders = (req, res, next) => {
            console.log("error encountered in ordersModel.getAllPastOrders:", error);
            next(error);
        });
+};
 
+ordersModel.getAllPrevOrdersItems = (req, res, next) => {
+    db
+      .manyOrNone(
+        "SELECT items.name, items.price, items.description, orders_items.comment, orders_items.order_id FROM users JOIN orders ON users.id = orders.user_id JOIN orders_items ON orders.id = orders_items.order_id JOIN items ON orders_items.item_id = items.id WHERE orders.status = 'completed';"
+      )
+       .then(data => {
+           res.locals.allPrevOrdersItems = data;
+           next();
+       })
+       .catch(error => {
+           console.log("error encountered in ordersModel.getAllPrevOrdersItems:", error);
+           next(error);
+       });
 };
 
 ordersModel.getAllCurrentOrders = (req, res, next) => {
     db
       .manyOrNone(
-        "SELECT orders.id, orders.status, users.username, orders.user_id FROM orders JOIN users ON orders.user_id = users.id WHERE status = 'inprogress';"
+        "SELECT orders.id, orders.status, users.username, orders.user_id FROM orders JOIN users ON orders.user_id = users.id WHERE status = 'inprogress' ORDER BY orders.id ASC;"
       )
        .then(data => {
            res.locals.allCurrentOrders = data;

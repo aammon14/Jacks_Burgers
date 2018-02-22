@@ -10,6 +10,10 @@ router.get("/previous", ordersModel.getAllPastOrders, (req, res, next) => {
     res.json(res.locals.allPastOrders);
 });
 
+router.get("/previousitem", ordersModel.getAllPrevOrdersItems, (req, res, next) => {
+    res.json(res.locals.allPrevOrdersItems);
+});
+
 router.get("/current", ordersModel.getAllCurrentOrders, (req, res, next) => {
     res.json(res.locals.allCurrentOrders);
 });

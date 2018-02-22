@@ -4,7 +4,7 @@ import Item from "./Components/Item";
 import Login from "./Components/Login";
 import Menu from "./Components/Menu";
 import Order from "./Components/Order";
-import Orders from "./Components/Orders";
+import PreviousOrders from "./Components/PreviousOrders";
 import Signup from "./Components/Signup";
 import UserEdit from "./Components/UserEdit";
 import Cart from "./Components/Cart";
@@ -180,7 +180,7 @@ class App extends Component {
               path="/orders"
               render={props => {
                 return (
-                  <Orders
+                  <PreviousOrders
                     {...props}
                     orders={this.state.orders}
                     getAllOrders={this.getAllOrders}

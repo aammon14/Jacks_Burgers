@@ -2,34 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .background {
   background: #f9f9f9;
   height: 100%;
@@ -53,8 +25,6 @@
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   padding: 0px 0px 0px 20px;
   position: fixed;
-  
-
 }
 .category_item{
   height: 175px;
@@ -65,7 +35,6 @@
   flex-direction: column;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   margin: 15px;
-
 }
 
 .category_title {
@@ -257,28 +226,50 @@ width: 45vw;
 
 }
 
-
-.prevOrderItem {
+/*previous orders styling:*/
+.prevOrderDiv {
   font-family: avenir;
   padding: 0 5px 5px;
-  width: 600px;
-  height: 125px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+  margin: 5px;
+  background: #03a9f4;
+  text-align: center;
+}
+.prevOrderDiv, h1 {
+  margin: 5px;
+  color: white;
+}
+.prevOrderItem {
+  padding: 0 5px 5px;
   background-color: white;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
-  list-style: none;
   margin: 5px;
+  width: 85%;
+  color: black;
 }
 .prevOrderText {
-  width: 350px;
+  width: 100%;
+  padding: 5px;
 }
-.prevOrderButtonDiv {
-  align-content: right;
-  margin: 0 0 auto auto;
-  width: 250px;
+.prevOrderText, p {
+  margin: 0;
+  font-size: 15px;
+  text-align: left;
 }
+.prevItem {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+}
+.orderAgain {
+  color: red;
+  text-align: right;
+}
+/*end of previous orders styling*/
 
 
 /*current orders styling:*/
@@ -340,20 +331,6 @@ width: 45vw;
 }
 /*end of current orders styling*/
 
-.orderAgainButton {
-  position: relative;
-  float: right;
-  font-family: avenir;
-  font-size: 10px;
-  height: 30px;
-  width: 200px;
-  margin: 35px auto;
-  border-radius: 40px;
-  background-color: #03a9f4;
-  color: white;
-  border-color: #03a9f4;
-  columns: 2;
-}
 
 .nav_bar {
   background-color: red;
