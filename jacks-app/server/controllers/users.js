@@ -20,4 +20,8 @@ router.post("/", usersModel.create, (req, res, next) => {
     res.json(res.locals.newUserId);
 });
 
+router.put("/edit/:id", usersModel.update, (req, res, next) => {
+    res.json(res.locals.updatedUserData);
+});
+
 module.exports = router;

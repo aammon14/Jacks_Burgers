@@ -27,6 +27,7 @@ class Item extends Component {
   }
 
   createOrder(user_id) {
+    console.log("creating order");
     axios({
       url: `http://localhost:8080/orders/${user_id}`,
       method: "post"

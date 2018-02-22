@@ -33,11 +33,16 @@ class App extends Component {
     this.getAllItems = this.getAllItems.bind(this);
     this.getAllUser = this.getAllUser.bind(this);
     this.getAllOrders = this.getAllOrders.bind(this);
+    this.getCart = this.getCart.bind(this);
     this.changeOrderState = this.changeOrderState.bind(this);
     this.changeCartState = this.changeCartState.bind(this);
     this.changeUserState = this.changeUserState.bind(this);
     this.changeCategoryState = this.changeCategoryState.bind(this);
-    this.getCart = this.getCart.bind(this);
+  }
+
+  componentDidMount() {
+    this.getAllItems();
+    this.getAllOrders();
   }
 
   // Item Calls
@@ -90,12 +95,6 @@ class App extends Component {
         hasData: true
       });
     });
-  }
-
-  componentDidMount() {
-    this.getAllItems();
-    this.getAllOrders();
-    this.getAllUser();
   }
 
   changeOrderState(order) {
@@ -156,6 +155,7 @@ class App extends Component {
                     <Link to="/orders">Previous Orders</Link>
                     <Link to="/kitchen">Kitchen Orders</Link>
                     <Link to="/Menu_Maintenance">Menu_Maintenance</Link>
+                    <Link to="/users/profile">Profile</Link>
                   </div>
                 );
               }}
@@ -225,9 +225,8 @@ class App extends Component {
                   <UserEdit
                     {...props}
                     state={this.state}
-                    users={this.state.users}
                     getAllUser={this.getAllUser}
-                    changeUserState={this.state.changeUserState}
+                    changeUserState={this.changeUserState}
                   />
                 );
               }}

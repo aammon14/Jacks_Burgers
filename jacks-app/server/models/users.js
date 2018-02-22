@@ -62,9 +62,10 @@ usersModel.update = (req, res, next) => {
     db
         .one(
             "UPDATE users SET username = $1, password = $2 WHERE id = $3 RETURNING *;",
-            [req.body.username, req.body.password, req.params.id]
+            [req.body.username, req.body.password, req.body.user]
         )
         .then(data => {
+            console.log(data);
             res.locals.updatedUserData = data;
             next();
         })

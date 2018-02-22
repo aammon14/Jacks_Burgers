@@ -6,13 +6,14 @@ class UserEdit extends Component {
     super(props);
 
     this.state = {
-      id: this.props.state.user.id,
+      user: this.props.state.user.id,
       username: this.props.state.user.username,
       password: this.props.state.user.password
     };
 
-    this.getUser = this.getUser.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateUser = this.updateUser.bind(this);
   }
 
   handleChange(event) {
@@ -22,36 +23,46 @@ class UserEdit extends Component {
     this.setState({ [name]: value });
   }
 
-  getUser() {
+  handleSubmit(e) {
+    e.preventDefault();
+    this.updateUser();
+  }
+
+  updateUser() {
     axios({
-      url: `http://localhost:8080/users/${this.state.id}`,
-      method: "put"
+      url: `http://localhost:8080/users/edit/${this.state.user}`,
+      method: "put",
+      data: this.state
     }).then(response => {
       this.props.changeUserState(response.data);
+      this.props.history.push("/items");
+      console.log(this.props.state.user);
     });
   }
 
   render() {
     return (
       <div>
-        <h1>Edit your profile</h1>
-        <input
-          type="text"
-          value={this.state.username}
-          name="username"
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          value={this.state.password}
-          name="username"
-          onChange={this.handleChange}
-        />
-        <input type="submit" name="submit" value="Update" />
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <h1>Edit your profile</h1>
+            <input
+              type="text"
+              value={this.state.username}
+              name="username"
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              value={this.state.password}
+              name="username"
+              onChange={this.handleChange}
+            />
+            <input type="submit" name="submit" value="Update" />
+          </div>
+        </form>
       </div>
     );
   }
-
-  // methods
 }
 export default UserEdit;
