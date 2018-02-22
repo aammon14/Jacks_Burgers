@@ -1,28 +1,14 @@
 import React, { Component } from "react";
-
 //import Cart from "./Cart.jsx";
-
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-// import { Button } from "react-bootstrap";
-// import { Modal } from "react-bootstrap";
-// import Cart from "./Cart";
-// import Item from "./Item";
-// import Appetizers from "./Appetizers";
-// import Entrees from "./Entrees";
-
-
 import { Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import Cart from "./Cart";
 import Item from "./Item";
-
-
 class Menu extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       item: {},
       order: this.props.state.order,
@@ -32,7 +18,6 @@ class Menu extends Component {
       viewAppetizers: false,
       viewEntrees: false
     };
-
     // this.getItem = this.getItem.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -45,13 +30,11 @@ class Menu extends Component {
   handleHide() {
     this.setState({ show: false, item: {} });
   }
-
   showAppetizers() {
     this.setState({
       viewAppetizers: !this.state.viewAppetizers
     });
   }
-
   toggleEntrees() {
     console.log("clicked");
     this.setState({
@@ -73,21 +56,17 @@ class Menu extends Component {
           this.handleHide();
         }
       );
-
       console.log(response.data);
     });
   }
-
   handleSubmit(e) {
     e.preventDefault();
     this.addItem();
   }
-
   handleChange(event) {
     this.setState({ comment: event.target.value });
     console.log(this.state.comment);
   }
-
   createOrder(user_id) {
     axios({
       url: `http://localhost:8080/orders/${user_id}`,
@@ -99,13 +78,11 @@ class Menu extends Component {
       });
     });
   }
-
   componentDidMount() {
     if (this.props.state.order === 0) {
       this.createOrder(this.state.user);
     }
   }
-
   render() {
     return (
       <div>
@@ -145,5 +122,4 @@ class Menu extends Component {
     );
   }
 }
-
 export default Menu;
