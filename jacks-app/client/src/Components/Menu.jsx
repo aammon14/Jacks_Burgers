@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import Cart from "./Cart.jsx";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -13,33 +12,13 @@ class Menu extends Component {
       item: {},
       order: this.props.state.order,
       user: 1,
-      comment: "",
-      show: false,
-      viewAppetizers: false,
-      viewEntrees: false
+      comment: ""
     };
     // this.getItem = this.getItem.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.createOrder = this.createOrder.bind(this);
     this.addItem = this.addItem.bind(this);
-    this.handleHide = this.handleHide.bind(this);
-    this.showAppetizers = this.showAppetizers.bind(this);
-    this.toggleEntrees = this.toggleEntrees.bind(this);
-  }
-  handleHide() {
-    this.setState({ show: false, item: {} });
-  }
-  showAppetizers() {
-    this.setState({
-      viewAppetizers: !this.state.viewAppetizers
-    });
-  }
-  toggleEntrees() {
-    console.log("clicked");
-    this.setState({
-      viewEntrees: !this.state.viewEntrees
-    });
   }
   addItem() {
     axios({
@@ -51,10 +30,7 @@ class Menu extends Component {
         {
           itemAdded: response.data
         },
-        () => {
-          this.props.getCart();
-          this.handleHide();
-        }
+        this.props.getCart()
       );
       console.log(response.data);
     });
