@@ -37,7 +37,7 @@ class Signup extends Component {
       data: this.state
     }).then(response => {
       this.props.changeUserState(response.data);
-      this.props.history.push("/");
+      this.props.history.push("/sign_in");
       console.log(this.props.state.user);
     });
   }
