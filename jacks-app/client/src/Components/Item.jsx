@@ -15,7 +15,14 @@ class Item extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.createOrder = this.createOrder.bind(this);
     this.addItem = this.addItem.bind(this);
-     }
+  }
+
+  componentDidMount() {
+    this.getItem();
+    if (this.props.state.order === 0) {
+      this.createOrder(this.state.user);
+    }
+  }
 
   getItem() {
     axios({
@@ -26,29 +33,6 @@ class Item extends Component {
         item: response.data
       });
     });
-  }
-
-  addItem() {
-    axios({
-      url: `http://localhost:8080/cart/${this.props.match.params.id}`,
-      method: "post",
-      data: this.state
-    }).then(response => {
-      this.props.getCart(this.props.state.order);
-      this.setState({
-        itemAdded: response.data
-      });
-    });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.addItem();
-    this.props.history.push("/");
-  }
-
-  handleChange(event) {
-    this.setState({ comment: event.target.value });
   }
 
   createOrder(user_id) {
@@ -63,11 +47,28 @@ class Item extends Component {
     });
   }
 
-  componentDidMount() {
-    this.getItem();
-    if (this.props.state.order === 0) {
-      this.createOrder(this.state.user);
-    }
+  handleChange(event) {
+    this.setState({ comment: event.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.addItem();
+    this.props.history.push("/");
+  }
+
+  addItem() {
+    axios({
+      url: `http://localhost:8080/cart/${this.props.match.params.id}`,
+      method: "post",
+      data: this.state
+    }).then(response => {
+      this.props.history.push("/items");
+      this.props.getCart(this.props.state.order);
+      this.setState({
+        itemAdded: response.data
+      });
+    });
   }
 
   render() {
@@ -79,7 +80,9 @@ class Item extends Component {
             <p className="item_specific_description">
               {this.state.item.description}
             </p>
-            <b><p className="special_instruction" >special Instructions</p></b>
+            <b>
+              <p className="special_instruction">Special Instructions</p>
+            </b>
             <textarea
               className="comment"
               type="text"
