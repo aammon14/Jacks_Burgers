@@ -37,9 +37,6 @@ class Login extends Component {
     axios({
       url: `http://localhost:8080/users/login/${this.state.username}`,
       method: "get"
-      // params: {
-      //   username: this.state.username
-      // }
     }).then(response => {
       this.setState(
         {
@@ -48,7 +45,6 @@ class Login extends Component {
         },
         this.checkCredentials
       );
-      console.log(this.state.actualpassword);
     });
   }
 

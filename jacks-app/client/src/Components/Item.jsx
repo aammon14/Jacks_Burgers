@@ -8,12 +8,14 @@ class Item extends Component {
     this.state = {
       item: {},
       order: this.props.state.order,
-      user: 1
+      user: this.props.state.user.id,
+      comment: ""
     };
-    this.getItem = this.getItem.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+
     this.createOrder = this.createOrder.bind(this);
+    this.getItem = this.getItem.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.addItem = this.addItem.bind(this);
   }
 
@@ -22,17 +24,6 @@ class Item extends Component {
     if (this.props.state.order === 0) {
       this.createOrder(this.state.user);
     }
-  }
-
-  getItem() {
-    axios({
-      url: `http://localhost:8080/items/${this.props.match.params.id}`,
-      method: "get"
-    }).then(response => {
-      this.setState({
-        item: response.data
-      });
-    });
   }
 
   createOrder(user_id) {
@@ -47,6 +38,17 @@ class Item extends Component {
     });
   }
 
+  getItem() {
+    axios({
+      url: `http://localhost:8080/items/${this.props.match.params.id}`,
+      method: "get"
+    }).then(response => {
+      this.setState({
+        item: response.data
+      });
+    });
+  }
+
   handleChange(event) {
     this.setState({ comment: event.target.value });
   }
@@ -54,7 +56,7 @@ class Item extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.addItem();
-    this.props.history.push("/");
+    this.props.history.push("/items");
   }
 
   addItem() {
@@ -63,7 +65,6 @@ class Item extends Component {
       method: "post",
       data: this.state
     }).then(response => {
-      this.props.history.push("/items");
       this.props.getCart(this.props.state.order);
       this.setState({
         itemAdded: response.data
