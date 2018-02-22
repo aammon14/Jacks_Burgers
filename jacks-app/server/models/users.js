@@ -2,6 +2,7 @@ const db = require("../db/setup.js");
 const usersModel = {};
 
 usersModel.allUsers = (req, res, next) => {
+    console.log("allusers");
     db
         .manyOrNone("SELECT * FROM users")
         .then(data => {
@@ -28,6 +29,7 @@ usersModel.findById = (req, res, next) => {
 };
 
 usersModel.findByUsername = (req, res, next) => {
+    console.log("username");
     db
         .one("SELECT * FROM users WHERE username = $1", [req.params.username])
         .then(data => {

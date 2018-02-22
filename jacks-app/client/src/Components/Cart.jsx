@@ -2,16 +2,14 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 
-
 class Cart extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       order: props.state.order,
-      user: 1,
+      user: this.props.state.user,
       completed: "false"
-
     };
 
     this.submitOrder = this.submitOrder.bind(this);
@@ -43,20 +41,18 @@ class Cart extends Component {
   }
 
   render() {
-    if (!(this.props.cart === [])) {
-      
-      const subtotal=this.props.cart.reduce(function(prev,current){
-        return prev + current.price
-      },0)
-      const nyTax=.0865
-      const tax = subtotal * nyTax
-      const total = subtotal + tax
-      return (
-        <div>
-        <h2 className="category_title"> Your Cart</h2>
+    const subtotal = this.props.cart.reduce(function(prev, current) {
+      return prev + current.price;
+    }, 0);
+    const nyTax = 0.0865;
+    const tax = subtotal * nyTax;
+    const total = subtotal + tax;
+
+    return (
+      <div>
         <form onSubmit={this.handleSubmit}>
-        <div className="cart_container">
-          <h1> Your Order </h1>
+          <div className="cart_container">
+            <h1> Your Order </h1>
             {this.props.cart.map((el, i) => {
               return (
                 <div key={i}>
@@ -64,25 +60,30 @@ class Cart extends Component {
                     className="cart_item_div_content"
                     to={`/items/${el.id}`}
                   >
-                    <h1 className="cart_item_name">{el.name} ${el.price}</h1>
-                    <p>{el.description}</p>
-                    <p>Comment: {el.comment}</p>
+                    <h1 className="cart_item_name">
+                      {el.name} ${el.price}
+                    </h1>
+                    <p>{el.comment}</p>
                   </Link>
                 </div>
               );
-            })}  
-        </div>
-        <div className="checkout">
-
-            <p> Subtotal <span>${subtotal.toFixed(2)}</span></p>
-            <p> Taxes <span> ${tax.toFixed(2)} </span></p>
-            <h3 className='total'> Total  <span> ${total.toFixed(2)}</span></h3>
+            })}
+          </div>
+          <div className="checkout">
+            <p>
+              Subtotal <span>${Number.parseFloat(subtotal).toFixed(2)}</span>
+            </p>
+            <p>
+              Taxes <span> ${Number.parseFloat(tax).toFixed(2)} </span>
+            </p>
+            <h3 className="total">
+              Total <span> ${Number.parseFloat(total).toFixed(2)}</span>
+            </h3>
             <input className="submit_button" type="submit" value="submit" />
-            </div>
-         </form>
-        </div>
-      );
-    }
+          </div>
+        </form>
+      </div>
+    );
   }
 }
 

@@ -13,8 +13,7 @@ import KitchenMode from "./Components/KitchenMode";
 import axios from "axios";
 import "./App.css";
 import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
-import Category from './Components/Category'
-
+import Category from "./Components/Category";
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +25,8 @@ class App extends Component {
       cart: [],
       orders: [],
       order: 1,
-      hasData: false
+      hasData: false,
+      categories: []
     };
 
     this.getAllItems = this.getAllItems.bind(this);
@@ -35,6 +35,7 @@ class App extends Component {
     this.changeOrderState = this.changeOrderState.bind(this);
     this.changeCartState = this.changeCartState.bind(this);
     this.changeUserState = this.changeUserState.bind(this);
+    this.changeCategoryState = this.changeCategoryState.bind(this);
     this.getCart = this.getCart.bind(this);
   }
 
@@ -61,7 +62,6 @@ class App extends Component {
         users: response.data,
         hasData: true
       });
-      // console.log(users);
     });
   }
 
@@ -91,13 +91,6 @@ class App extends Component {
     });
   }
 
-  // getItemsByCategory() {
-  //   axios({
-  //     url: "",
-  //     method: "get"
-  //   }).then(response => {});
-  // }
-
   componentDidMount() {
     this.getAllItems();
     this.getAllOrders();
@@ -116,6 +109,10 @@ class App extends Component {
     this.setState({ user: user });
   }
 
+  changeCategoryState(categories) {
+    this.setState({ categories: categories });
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -128,19 +125,22 @@ class App extends Component {
               render={props => {
                 return (
                   <div className="items_page">
-                  
-                    <Category items={this.state.items}/>
+                    <Category
+                      state={this.state}
+                      getAllItems={this.getAllItems}
+                      changeCategoryState={this.changeCategoryState}
+                    />
                     <Menu
-                     {...props}
-                     items={this.state.items}
-                     getAllItems={this.getAllItems}
-                     changeOrderState={this.changeOrderState.bind(this)}
-                     changeCartState={this.changeCartState.bind(this)}
-                     orders={this.state.orders}
-                     state={this.state}
-                     getCart={this.getCart}
-                     addItemToCart={this.addItemToCart}
-                   />
+                      {...props}
+                      items={this.state.items}
+                      getAllItems={this.getAllItems}
+                      changeOrderState={this.changeOrderState.bind(this)}
+                      changeCartState={this.changeCartState.bind(this)}
+                      orders={this.state.orders}
+                      state={this.state}
+                      getCart={this.getCart}
+                      addItemToCart={this.addItemToCart}
+                    />
                     <Cart
                       {...props}
                       state={this.state}
@@ -149,8 +149,8 @@ class App extends Component {
                       changeOrderState={this.changeOrderState.bind(this)}
                       changeCartState={this.changeCartState.bind(this)}
                     />
-                    <Link to='/orders'>Previous Orders</Link>
-                    <Link to='/kitchen'>Kitchen Orders</Link>
+                    <Link to="/orders">Previous Orders</Link>
+                    <Link to="/kitchen">Kitchen Orders</Link>
                   </div>
                 );
               }}
@@ -169,8 +169,7 @@ class App extends Component {
                     getAllItems={this.getAllItems}
                     addItemToCart={this.addItemToCart}
                     getCart={this.getCart}
-                     orders={this.state.orders}
-
+                    orders={this.state.orders}
                   />
                 );
               }}
@@ -249,7 +248,7 @@ class App extends Component {
                 return (
                   <KitchenMode
                     {...props}
-                    state={this.state} 
+                    state={this.state}
                     changeOrderState={this.changeOrderState.bind(this)}
                   />
                 );
@@ -270,7 +269,7 @@ class App extends Component {
               }}
             />
             <Route
-              exact 
+              exact
               path="/Login"
               render={props => {
                 return (
@@ -284,7 +283,6 @@ class App extends Component {
               }}
             />
           </Switch>
-
         </div>
       </BrowserRouter>
     );
