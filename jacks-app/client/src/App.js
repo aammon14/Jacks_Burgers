@@ -128,6 +128,7 @@ class App extends Component {
                 return (
                   <div>
                     <div className="items_page">
+                    <Navbar />
                       <Category
                         {...props}
                         state={this.state}

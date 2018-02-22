@@ -41,7 +41,12 @@ class Menu extends Component {
   render() {
     return (
       <div>
-        <div className="nav_bar">none</div>
+         <div className="hero_image">
+            <div className="hero_text">
+              <h1> Jack's Burgers</h1>
+              <h2>Fresher.Tastier.Better.</h2>
+          </div>
+        </div>
         <div className="menu_container">
           <div>
             {this.props.state.categories.map((category, i) => {
@@ -49,7 +54,7 @@ class Menu extends Component {
                 <div>
                   <h1 className="Menu_title" id={category}>
                     {category}
-                  </h1>;
+                  </h1>
                   {this.props.items.map((items, i) => {
                     if (items.category === category) {
                       return (
