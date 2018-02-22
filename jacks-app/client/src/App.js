@@ -10,12 +10,12 @@ import UserEdit from "./Components/UserEdit";
 import Cart from "./Components/Cart";
 import Menu_Maintenance from "./Components/Menu_Maintenance";
 import KitchenMode from "./Components/KitchenMode";
+import Category from "./Components/Category";
+import Navbar from "./Components/Navbar";
+
 import axios from "axios";
 import "./App.css";
 import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
-import Category from './Components/Category'
-import Navbar from "./Components/Navbar";
-
 
 class App extends Component {
   constructor(props) {
@@ -126,32 +126,32 @@ class App extends Component {
               path="/items"
               render={props => {
                 return (
-                  <div >
-                  <div className="items_page">
-                    <Category
-                      state={this.state}
-                      getAllItems={this.getAllItems}
-                      changeCategoryState={this.changeCategoryState}
-                    />
-                    <Menu
-                      {...props}
-                      items={this.state.items}
-                      getAllItems={this.getAllItems}
-                      changeOrderState={this.changeOrderState.bind(this)}
-                      changeCartState={this.changeCartState.bind(this)}
-                      orders={this.state.orders}
-                      state={this.state}
-                      getCart={this.getCart}
-                      addItemToCart={this.addItemToCart}
-                    />
-                    <Cart
-                      {...props}
-                      state={this.state}
-                      cart={this.state.cart}
-                      getCart={this.getCart}
-                      changeOrderState={this.changeOrderState.bind(this)}
-                      changeCartState={this.changeCartState.bind(this)}
-                    />
+                  <div>
+                    <div className="items_page">
+                      <Category
+                        {...props}
+                        state={this.state}
+                        getAllItems={this.getAllItems}
+                        changeCategoryState={this.changeCategoryState}
+                      />
+                      <Menu
+                        {...props}
+                        items={this.state.items}
+                        getAllItems={this.getAllItems}
+                        changeOrderState={this.changeOrderState.bind(this)}
+                        changeCartState={this.changeCartState.bind(this)}
+                        orders={this.state.orders}
+                        state={this.state}
+                        getCart={this.getCart}
+                      />
+                      <Cart
+                        {...props}
+                        state={this.state}
+                        cart={this.state.cart}
+                        getCart={this.getCart}
+                        changeOrderState={this.changeOrderState.bind(this)}
+                        changeCartState={this.changeCartState.bind(this)}
+                      />
                     </div>
                     <Link to="/orders">Previous Orders</Link>
                     <Link to="/kitchen">Kitchen Orders</Link>
