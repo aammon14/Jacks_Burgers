@@ -49,15 +49,15 @@ class Category extends Component {
 
   render() {
     return (
-      <div className="category_container">
+      <div className="category_container category_item">
         <h2 className="category_title"> Categories</h2>
         {this.state.categories.map((el, i) => {
           return (
-            <div key={i}>
-              <Scrollchor className="category_item" to={`#${el}`}>
-                <h1 className="cart_item_name">{el}</h1>
-              </Scrollchor>
-            </div>
+            <Scrollchor to={`#${el}`}>
+              <h1 key={i} className="cart_item_name">
+                {el}
+              </h1>
+            </Scrollchor>
           );
         })}
       </div>

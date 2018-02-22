@@ -118,7 +118,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="main-container background">
           <Switch>
-            <Route exact path="/" render={() => <Redirect to="/items" />} />
+            <Route exact path="/" render={() => <Redirect to="/Sign_in" />} />
             <Route
               exact
               path="/items"
@@ -215,13 +215,15 @@ class App extends Component {
             />
             <Route
               exact
-              path="/users/:id"
+              path="/users/profile"
               render={props => {
                 return (
                   <UserEdit
                     {...props}
+                    state={this.state}
                     users={this.state.users}
                     getAllUser={this.getAllUser}
+                    changeUserState={this.state.changeUserState}
                   />
                 );
               }}
@@ -256,7 +258,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/Signup"
+              path="/Sign_up"
               render={props => {
                 return (
                   <Signup
@@ -270,7 +272,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/Login"
+              path="/Sign_in"
               render={props => {
                 return (
                   <Login

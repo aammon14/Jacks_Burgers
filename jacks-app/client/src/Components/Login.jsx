@@ -6,6 +6,7 @@ class Login extends Component {
     super(props);
 
     this.state = {
+      user: "",
       username: "",
       password: "",
       actualpassword: ""
@@ -42,6 +43,7 @@ class Login extends Component {
     }).then(response => {
       this.setState(
         {
+          user: response.data,
           actualpassword: response.data.password
         },
         this.checkCredentials
@@ -53,6 +55,7 @@ class Login extends Component {
   checkCredentials() {
     console.log("checking");
     if (this.state.actualpassword === this.state.password) {
+      this.props.changeUserState(this.state.user);
       this.props.history.push("/items");
     } else {
       console.log("no match");
@@ -77,7 +80,7 @@ class Login extends Component {
             onChange={this.handleChange}
             value={this.state.password}
           />
-          <input type="submit" name="submit" value="Log In" />
+          <input type="submit" name="submit" value="Sign In" />
         </form>
       </div>
     );
