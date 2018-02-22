@@ -15,10 +15,11 @@ class Category extends Component {
     return (
 
       <div className="category_container">
+      <div className="category_Menu_title">
       <h2 className="category_title"> Categories</h2>
-
+      </div>
     
-      <div className="category_div" >
+      
       <div className="category_item">
        <Scrollchor to="#Appetizers">
       <h2>Appetizers</h2>
@@ -33,7 +34,6 @@ class Category extends Component {
       </Scrollchor>
       </div>
       
-      </div>
     
 
     </div>

@@ -105,21 +105,25 @@ toggleEntrees(){
 
   render() {
     return (
-      <div>
-      <div className= 'nav_bar'>none</div>
-        <div className="menu_container">
-      <div>
-      
+  <div>
+  <div className="hero_image">
+    <div className="hero_text">
+    <h1> Jack's Burgers</h1>
+    <h2>Fresher.Tastier.Better.</h2>
+    </div>
+  </div>
+   <div className="menu_container">
+
          <h2 className="Menu_title" id="Appetizers">Appetizers</h2>
           {this.props.items.map((el, i) => {
             if(el.category==="Appetizers"){
               return (
               <div className="item_div" key={i}>
-                <Link className="item_div_content" to={`/items/${el.id}`}>
-                  <h1 className="item_name">{el.name}</h1>
+                <Link className="item_div_content" to={`/items/${el.id}`}> 
+                  <h1 className="item_name">{el.name}</h1></Link>
                   <p className="item_description">{el.description}</p>
                   <p className="item_price">${el.price}</p>
-                </Link>
+               
 
               </div>
             )};
@@ -131,16 +135,16 @@ toggleEntrees(){
               return (
               <div className="item_div" key={i}>
                 <Link className="item_div_content" to={`/items/${el.id}`}>
-                  <h1 className="item_name">{el.name}</h1>
+                  <h1 className="item_name">{el.name}</h1></Link>
                   <p className="item_description">{el.description}</p>
                   <p className="item_price">${el.price}</p>
-                </Link>
+                
               </div>
             )};
           })}
-        </div>
-      </div>
-      </div>
+       </div>
+       </div>
+    
     );
   }
 }
