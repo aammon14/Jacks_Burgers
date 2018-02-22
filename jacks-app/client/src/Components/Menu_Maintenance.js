@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-//import Cart from "./Cart.jsx";
 import axios from "axios";
 
 class Menu_Maintenance extends Component {
@@ -45,6 +44,7 @@ class Menu_Maintenance extends Component {
   render() {
     return (
       <div className="main_container">
+        <Link to="/items">Menu</Link>
         <div>
           {this.props.items.map((el, i) => {
             return (
