@@ -1,16 +1,22 @@
-
 import React, { Component } from "react";
 
 //import Cart from "./Cart.jsx";
 
 import axios from "axios";
 import { Link } from "react-router-dom";
+
 // import { Button } from "react-bootstrap";
 // import { Modal } from "react-bootstrap";
 // import Cart from "./Cart";
 // import Item from "./Item";
 // import Appetizers from "./Appetizers";
 // import Entrees from "./Entrees";
+
+
+import { Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import Cart from "./Cart";
+import Item from "./Item";
 
 
 class Menu extends Component {
@@ -24,7 +30,7 @@ class Menu extends Component {
       comment: "",
       show: false,
       viewAppetizers: false,
-      viewEntrees:false
+      viewEntrees: false
     };
 
     // this.getItem = this.getItem.bind(this);
@@ -33,25 +39,25 @@ class Menu extends Component {
     this.createOrder = this.createOrder.bind(this);
     this.addItem = this.addItem.bind(this);
     this.handleHide = this.handleHide.bind(this);
-    this.showAppetizers=this.showAppetizers.bind(this)
-    this.toggleEntrees=this.toggleEntrees.bind(this)
+    this.showAppetizers = this.showAppetizers.bind(this);
+    this.toggleEntrees = this.toggleEntrees.bind(this);
   }
   handleHide() {
     this.setState({ show: false, item: {} });
   }
 
-showAppetizers(){
-  this.setState({
-    viewAppetizers:!this.state.viewAppetizers
-  })
-}
+  showAppetizers() {
+    this.setState({
+      viewAppetizers: !this.state.viewAppetizers
+    });
+  }
 
-toggleEntrees(){
-  console.log('clicked')
-  this.setState({
-    viewEntrees: !this.state.viewEntrees
-  })
-}
+  toggleEntrees() {
+    console.log("clicked");
+    this.setState({
+      viewEntrees: !this.state.viewEntrees
+    });
+  }
   addItem() {
     axios({
       url: `http://localhost:8080/cart/${this.state.item.id}`,
@@ -83,7 +89,6 @@ toggleEntrees(){
   }
 
   createOrder(user_id) {
-    console.log("ran create order");
     axios({
       url: `http://localhost:8080/orders/${user_id}`,
       method: "post"
@@ -96,8 +101,6 @@ toggleEntrees(){
   }
 
   componentDidMount() {
-    console.log("MOUNTED");
-    // this.getItem();
     if (this.props.state.order === 0) {
       this.createOrder(this.state.user);
     }
@@ -105,46 +108,40 @@ toggleEntrees(){
 
   render() {
     return (
-  <div>
-  <div className="hero_image">
-    <div className="hero_text">
-    <h1> Jack's Burgers</h1>
-    <h2>Fresher.Tastier.Better.</h2>
-    </div>
-  </div>
-   <div className="menu_container">
-
-         <h2 className="Menu_title" id="Appetizers">Appetizers</h2>
-          {this.props.items.map((el, i) => {
-            if(el.category==="Appetizers"){
+      <div>
+        <div className="nav_bar">none</div>
+        <div className="menu_container">
+          <div>
+            {this.props.state.categories.map((category, i) => {
               return (
-              <div className="item_div" key={i}>
-                <Link className="item_div_content" to={`/items/${el.id}`}> 
-                  <h1 className="item_name">{el.name}</h1></Link>
-                  <p className="item_description">{el.description}</p>
-                  <p className="item_price">${el.price}</p>
-               
-
-              </div>
-            )};
-          })}
-
-         <h2 className="Menu_title" id="Entrees">Entrees</h2>
-          {this.props.items.map((el, i) => {
-            if(el.category==="Entree"){
-              return (
-              <div className="item_div" key={i}>
-                <Link className="item_div_content" to={`/items/${el.id}`}>
-                  <h1 className="item_name">{el.name}</h1></Link>
-                  <p className="item_description">{el.description}</p>
-                  <p className="item_price">${el.price}</p>
-                
-              </div>
-            )};
-          })}
-       </div>
-       </div>
-    
+                <div>
+                  <h1 className="Menu_title" id={category}>
+                    {category}
+                  </h1>;
+                  {this.props.items.map((items, i) => {
+                    if (items.category === category) {
+                      return (
+                        <div className="item_div" key={i}>
+                          <Link
+                            className="item_div_content"
+                            to={`/items/${items.id}`}
+                          >
+                            <h1 className="item_name">{items.name}</h1>
+                            <p className="item_description">
+                              {items.description}
+                            </p>
+                            <p className="item_price">${items.price}</p>
+                          </Link>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     );
   }
 }

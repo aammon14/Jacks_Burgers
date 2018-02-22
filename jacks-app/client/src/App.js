@@ -27,7 +27,8 @@ class App extends Component {
       cart: [],
       orders: [],
       order: 1,
-      hasData: false
+      hasData: false,
+      categories: []
     };
 
     this.getAllItems = this.getAllItems.bind(this);
@@ -36,6 +37,7 @@ class App extends Component {
     this.changeOrderState = this.changeOrderState.bind(this);
     this.changeCartState = this.changeCartState.bind(this);
     this.changeUserState = this.changeUserState.bind(this);
+    this.changeCategoryState = this.changeCategoryState.bind(this);
     this.getCart = this.getCart.bind(this);
   }
 
@@ -62,7 +64,6 @@ class App extends Component {
         users: response.data,
         hasData: true
       });
-      // console.log(users);
     });
   }
 
@@ -92,13 +93,6 @@ class App extends Component {
     });
   }
 
-  // getItemsByCategory() {
-  //   axios({
-  //     url: "",
-  //     method: "get"
-  //   }).then(response => {});
-  // }
-
   componentDidMount() {
     this.getAllItems();
     this.getAllOrders();
@@ -117,33 +111,39 @@ class App extends Component {
     this.setState({ user: user });
   }
 
+  changeCategoryState(categories) {
+    this.setState({ categories: categories });
+  }
+
   render() {
     return (
       <BrowserRouter>
         <div className="main-container background">
           <Switch>
-            <Route exact path="/" render={() => <Redirect to="/items" />} />
+            <Route exact path="/" render={() => <Redirect to="/Sign_in" />} />
             <Route
               exact
               path="/items"
               render={props => {
                 return (
                   <div >
-
-                    <Navbar />
-                    <div className="items_page">
-                    <Category items={this.state.items}/>
+                  <div className="items_page">
+                    <Category
+                      state={this.state}
+                      getAllItems={this.getAllItems}
+                      changeCategoryState={this.changeCategoryState}
+                    />
                     <Menu
-                     {...props}
-                     items={this.state.items}
-                     getAllItems={this.getAllItems}
-                     changeOrderState={this.changeOrderState.bind(this)}
-                     changeCartState={this.changeCartState.bind(this)}
-                     orders={this.state.orders}
-                     state={this.state}
-                     getCart={this.getCart}
-                     addItemToCart={this.addItemToCart}
-                   />
+                      {...props}
+                      items={this.state.items}
+                      getAllItems={this.getAllItems}
+                      changeOrderState={this.changeOrderState.bind(this)}
+                      changeCartState={this.changeCartState.bind(this)}
+                      orders={this.state.orders}
+                      state={this.state}
+                      getCart={this.getCart}
+                      addItemToCart={this.addItemToCart}
+                    />
                     <Cart
                       {...props}
                       state={this.state}
@@ -153,6 +153,8 @@ class App extends Component {
                       changeCartState={this.changeCartState.bind(this)}
                     />
                     </div>
+                    <Link to="/orders">Previous Orders</Link>
+                    <Link to="/kitchen">Kitchen Orders</Link>
                   </div>
                 );
               }}
@@ -171,8 +173,7 @@ class App extends Component {
                     getAllItems={this.getAllItems}
                     addItemToCart={this.addItemToCart}
                     getCart={this.getCart}
-                     orders={this.state.orders}
-
+                    orders={this.state.orders}
                   />
                 );
               }}
@@ -218,13 +219,15 @@ class App extends Component {
             />
             <Route
               exact
-              path="/users/:id"
+              path="/users/profile"
               render={props => {
                 return (
                   <UserEdit
                     {...props}
+                    state={this.state}
                     users={this.state.users}
                     getAllUser={this.getAllUser}
+                    changeUserState={this.state.changeUserState}
                   />
                 );
               }}
@@ -251,7 +254,7 @@ class App extends Component {
                 return (
                   <KitchenMode
                     {...props}
-                    state={this.state} 
+                    state={this.state}
                     changeOrderState={this.changeOrderState.bind(this)}
                   />
                 );
@@ -259,7 +262,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/Signup"
+              path="/Sign_up"
               render={props => {
                 return (
                   <Signup
@@ -272,8 +275,8 @@ class App extends Component {
               }}
             />
             <Route
-              exact 
-              path="/Login"
+              exact
+              path="/Sign_in"
               render={props => {
                 return (
                   <Login
@@ -286,7 +289,6 @@ class App extends Component {
               }}
             />
           </Switch>
-
         </div>
       </BrowserRouter>
     );

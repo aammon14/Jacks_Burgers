@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
 class KitchenMode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: 'inprogress',
+
+      order: 0,
+      status: "inprogress",
       currentOrders: [],
       currentOrdersItems: [],
     };
@@ -14,7 +16,7 @@ class KitchenMode extends Component {
     this.getCurrentOrdersItems = this.getCurrentOrdersItems.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submitOrder = this.submitOrder.bind(this);
-  };
+  }
 
   getCurrentOrders() {
     axios({
@@ -38,7 +40,7 @@ class KitchenMode extends Component {
       });
       // console.log('in getCurrentOrdersItems currentOrdersItems: ', response.data)
     });
-  };
+  }
 
   componentDidMount() {
     this.getCurrentOrders();
@@ -54,9 +56,22 @@ class KitchenMode extends Component {
     }, this.submitOrder)
   };
 
+
+  // handleSubmit(id) {
+  //   this.setState(
+  //     {
+  //       status: "completed",
+  //       order: id
+  //     },
+  //     this.submitOrder
+  //   );
+  // }
+
   submitOrder() {
-    console.log('in submit order, this.state.currentOrders: ', this.state.currentOrders)
-    console.log('in submitOrder, this.state: ', this.state);
+    console.log(
+      "in submit order, this.state.currentOrders: ",
+      this.state.currentOrders
+    );
     axios({
       url: "http://localhost:8080/orders/",
       method: "PUT",
@@ -65,7 +80,7 @@ class KitchenMode extends Component {
       console.log(this.state.currentOrders);
       this.getCurrentOrders();
     });
-  };
+  }
 
   render() {
     const current = this.state.currentOrders.map((el, i) => {
@@ -95,7 +110,7 @@ class KitchenMode extends Component {
         <ul>{current}</ul>
       </div>
     );
-  };
-};
+  }
+}
 
 export default KitchenMode;

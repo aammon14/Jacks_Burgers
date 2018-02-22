@@ -11,8 +11,8 @@ router.get("/:id", usersModel.findById, (req, res, next) => {
     res.json(res.locals.userData);
 });
 
-router.get("/username", usersModel.findByUsername, (req, res, next) => {
-    console.log("userame");
+router.get("/login/:username", usersModel.findByUsername, (req, res, next) => {
+    console.log("username");
     res.json(res.locals.userData);
 });
 

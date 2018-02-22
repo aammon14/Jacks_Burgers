@@ -6,12 +6,13 @@ class Login extends Component {
     super(props);
 
     this.state = {
+      user: "",
       username: "",
       password: "",
       actualpassword: ""
     };
 
-    this.getUser = this.getUser.bind(this);
+    this.getUserByUsername = this.getUserByUsername.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.checkCredentials = this.checkCredentials.bind(this);
@@ -29,26 +30,36 @@ class Login extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.getUser();
+    this.getUserByUsername();
   }
 
-  getUser() {
+  getUserByUsername() {
     axios({
-      url: `http://localhost:8080/users/${this.state.username}`,
+      url: `http://localhost:8080/users/login/${this.state.username}`,
       method: "get"
+      // params: {
+      //   username: this.state.username
+      // }
     }).then(response => {
-      this.setState({
-        actualpassword: response.data
-      });
-      this.checkCredentials();
+      this.setState(
+        {
+          user: response.data,
+          actualpassword: response.data.password
+        },
+        this.checkCredentials
+      );
+      console.log(this.state.actualpassword);
     });
   }
 
   checkCredentials() {
+    console.log("checking");
     if (this.state.actualpassword === this.state.password) {
+      this.props.changeUserState(this.state.user);
       this.props.history.push("/items");
     } else {
-      this.props.history.push("/signin");
+      console.log("no match");
+      this.props.history.push("/Login");
     }
   }
 
@@ -69,12 +80,10 @@ class Login extends Component {
             onChange={this.handleChange}
             value={this.state.password}
           />
-          <input type="submit" name="submit" value="Sign Up" />
+          <input type="submit" name="submit" value="Sign In" />
         </form>
       </div>
     );
   }
-
-  // methods
 }
 export default Login;
