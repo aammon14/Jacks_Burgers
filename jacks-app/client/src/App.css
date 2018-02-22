@@ -12,20 +12,8 @@
   position: fixed;
   width: 100vw;
   z-index: 1;
+  display: flex;
 }
-
-/*Make these class specific*/
-ul {
-list-style-type: none;
-margin: 0;
-padding: 0;
-overflow: hidden;
-padding-top: 20px;
-}
-li {
-  float: right;
-}
-
 /*Hero image and text*/
 .hero_image{
   width:100vw;

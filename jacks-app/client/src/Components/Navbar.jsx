@@ -5,12 +5,10 @@ class Navbar extends Component {
 	render(){
 return(
 <div className='nav_bar'>
-  <ul>
-  <li> Login</li>
-  <li> Sign up</li>
-  <Link to='/orders'>Previous Orders</Link>
-  <Link to='/kitchen'>Kitchen Orders</Link>
-  </ul>
+  <div className="nav_links"><Link to='/Login'>Login</Link></div>
+  <div className="nav_links"><Link to='/Signup'>Sign up</Link></div>
+  <div className="nav_links"><Link to='/orders'>Previous Orders</Link></div>
+  <div className="nav_links"><Link to='/kitchen'>Kitchen Orders</Link></div>
  </div>
 
 )}}
