@@ -675,10 +675,21 @@ hr.line {
   position: absolute;
   top: 80%;
   /*right: 23%;*/
-  right: 25%;
+  right: 36%;
 
-  width: 15vw;
-  height: 7vh;
+  width: 8vw;
+  height: 6vh;
   background: red;
+}
+/*Register Link*/
+.register{
+  color:ghostwhite;
+  position: relative;
+  top: 68%;
+  right: 10%;
+}
+.link {
+  color: red;
+  text-decoration: none;
 }
 
