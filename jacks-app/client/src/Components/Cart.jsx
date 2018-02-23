@@ -53,9 +53,12 @@ class Cart extends Component {
 
     return (
       <div>
+
         <form onSubmit={this.handleSubmit}>
           <div className="cart_container">
-            <h1> Your Order </h1>
+          <div className="category_Menu_title">
+            <h1 > Your Order </h1>
+            </div>
             {this.props.cart.map((el, i) => {
               return (
                 <div key={i} className="cart_item_div_content">
@@ -73,9 +76,11 @@ class Cart extends Component {
             <p>
               Subtotal <span>${Number.parseFloat(subtotal).toFixed(2)}</span>
             </p>
+            <hr className="line" />
             <p>
               Taxes <span> ${Number.parseFloat(tax).toFixed(2)} </span>
             </p>
+             <hr className="line" />
             <h3 className="total">
               Total <span> ${Number.parseFloat(total).toFixed(2)}</span>
             </h3>

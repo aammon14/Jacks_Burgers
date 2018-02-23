@@ -11,8 +11,19 @@
   background-color:red;
   position: fixed;
   width: 100vw;
-  z-index: 1;
+  z-index: 3;
   display: flex;
+  justify-content: flex-end;
+}
+.nav_links{
+ /* flex:1;*/
+  border:1px solid green;
+  width:10vw;
+}
+.nav_container{
+  width:40vw;
+  display: flex;
+
 }
 /*Hero image and text*/
 .hero_image{
@@ -21,6 +32,8 @@
   background-image: url("./Images/Burger.jpg");
   background-size: cover;
   background-position: center;
+  z-index: 2;
+  position: relative;
 }
 .hero_text h1{
   display: flex;
@@ -91,13 +104,16 @@
 }
 .category_title {
   width: 25vw;
-  height: 50px;
+  height: 30px;
   text-align: center;
   position: fixed; 
   text-decoration: none;
+
 }
-
-
+.category_container a{
+  text-decoration: none;
+  color:black;
+}
 
 /*Menu Component*/
 .menu_container{
@@ -113,7 +129,6 @@
   text-align: center;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   flex-direction: column;
-
 }
 .item_div{
   width: 40vw;
@@ -175,14 +190,32 @@
   font-size: 20px;
   padding-bottom: 25px;
 }
-
-
+.featured_image_left{
+  position:fixed;
+  top:10vh;
+  left:0;
+  margin: 10px;
+  width:25vw;
+  height:35vh;
+  background-image: url('https://media.gettyimages.com/photos/hot-dog-picture-id168494961?k=6&m=168494961&s=170667a&w=0&h=vdMpD1X0Q4vYqolIMLjbXnrHXrcz2QBmjOGW6HL8bTQ=');
+  z-index: 1;
+}
+.featured_image_right{
+  position:fixed;
+  top:10vh;
+  right:0;
+  margin: 10px;
+  width:25vw;
+  height:35vh;
+  background-image: url('https://media.gettyimages.com/photos/hot-dog-picture-id168494961?k=6&m=168494961&s=170667a&w=0&h=vdMpD1X0Q4vYqolIMLjbXnrHXrcz2QBmjOGW6HL8bTQ=');
+  z-index: 1;
+}
 /*cart container*/
 .cart_container {
   position:fixed;
   top:50vh;
   right: 10px;
-  height: 60vh;
+  height: 25vh;
   width: 25vw;
   margin: 15px auto;
   background-color: #f9f9f9;
@@ -190,6 +223,8 @@
   flex-direction: column;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   text-align: center;
+ /* background-color: red;*/
+  overflow: auto;
 }
 .cart_items{
   margin-top:10px;
@@ -198,8 +233,10 @@
   height: 20vh;
 }
 .cart_item_div_content{
+  height:5vh;
   background-color: white;
   margin:10px auto;
+  overflow: auto;
 }
 
 .cart_item_div_content a{
@@ -223,8 +260,9 @@
  position:fixed;
  bottom:0px;
  width: 25vw;
-  right: 10px; 
+right: 10px; 
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 .submit_button {
   margin: 0 auto;

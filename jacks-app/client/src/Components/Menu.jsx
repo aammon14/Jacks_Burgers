@@ -24,6 +24,10 @@ class Menu extends Component {
               <h2>Fresher.Tastier.Better.</h2>
           </div>
         </div>
+        <div className="featured_image_left">
+        </div>
+        <div className="featured_image_right">
+        </div>
         <div className="menu_container">
           <div>
             {this.props.state.categories.map((category, i) => {
