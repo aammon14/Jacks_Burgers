@@ -24,7 +24,7 @@ class KitchenMode extends Component {
 
   getCurrentOrders() {
     axios({
-      url: "http://localhost:8080/orders/current",
+      url: "/orders/current",
       method: "get"
     }).then(response => {
       this.setState({
@@ -35,7 +35,7 @@ class KitchenMode extends Component {
 
   getCurrentOrdersItems() {
     axios({
-      url: "http://localhost:8080/orders/currentitem",
+      url: "/orders/currentitem",
       method: "get"
     }).then(response => {
       this.setState({
@@ -61,7 +61,7 @@ class KitchenMode extends Component {
       this.state.currentOrders
     );
     axios({
-      url: "http://localhost:8080/orders/",
+      url: "/orders/",
       method: "PUT",
       data: this.state
     }).then(response => {

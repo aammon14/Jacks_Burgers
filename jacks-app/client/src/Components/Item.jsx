@@ -24,7 +24,7 @@ class Item extends Component {
   createOrder(user_id) {
     console.log("creating order");
     axios({
-      url: `http://localhost:8080/orders/${user_id}`,
+      url: `/orders/${user_id}`,
       method: "post"
     }).then(response => {
       this.props.changeOrderState(response.data.id);
@@ -35,7 +35,7 @@ class Item extends Component {
   }
   getItem() {
     axios({
-      url: `http://localhost:8080/items/${this.props.match.params.id}`,
+      url: `/items/${this.props.match.params.id}`,
       method: "get"
     }).then(response => {
       this.setState({
@@ -53,7 +53,7 @@ class Item extends Component {
   }
   addItem() {
     axios({
-      url: `http://localhost:8080/cart/${this.props.match.params.id}`,
+      url: `/cart/${this.props.match.params.id}`,
       method: "post",
       data: this.state
     }).then(response => {

@@ -16,7 +16,7 @@ class Orders extends Component {
 
   getPrevOrders() {
     axios({
-      url: "http://localhost:8080/orders/previous",
+      url: "/orders/previous",
       method: "get"
     }).then(response => {
       this.setState({

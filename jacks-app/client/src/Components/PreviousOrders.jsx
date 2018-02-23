@@ -22,7 +22,7 @@ class PreviousOrders extends Component {
 
   getPrevOrders() {
     axios({
-      url: "http://localhost:8080/orders/previous",
+      url: "/orders/previous",
       method: "get"
     }).then(response => {
       this.setState({
@@ -33,7 +33,7 @@ class PreviousOrders extends Component {
 
   getPrevOrdersItems() {
     axios({
-      url: "http://localhost:8080/orders/previousitem",
+      url: "/orders/previousitem",
       method: "get"
     }).then(response => {
       this.setState({

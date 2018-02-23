@@ -33,7 +33,7 @@ class UserEdit extends Component {
 
   updateUser() {
     axios({
-      url: `http://localhost:8080/users/edit/${this.state.user}`,
+      url: `/users/edit/${this.state.user}`,
       method: "put",
       data: this.state
     }).then(response => {
@@ -45,7 +45,7 @@ class UserEdit extends Component {
 
   delete() {
     axios({
-      url: `http://localhost:8080/users/${this.state.user}`,
+      url: `/users/${this.state.user}`,
       method: "delete"
     }).then(() => {
       console.log("user deleted");

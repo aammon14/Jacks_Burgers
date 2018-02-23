@@ -34,7 +34,7 @@ class Cart extends Component {
   submitOrder() {
     console.log(this.state.status);
     axios({
-      url: "http://localhost:8080/orders",
+      url: "/orders",
       method: "PUT",
       data: this.state
     }).then(response => {

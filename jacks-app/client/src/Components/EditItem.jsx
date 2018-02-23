@@ -9,7 +9,7 @@ class EditItem extends Component {
 
   createOrder() {
     axios({
-      url: "localhost:3000/orders/",
+      url: "/orders/",
       method: "put"
     }).then(response => {});
   }

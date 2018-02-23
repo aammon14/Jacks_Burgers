@@ -34,7 +34,7 @@ class Signup extends Component {
 
   createUser() {
     axios({
-      url: "http://localhost:8080/users",
+      url: "/users",
       method: "POST",
       data: this.state
     }).then(response => {

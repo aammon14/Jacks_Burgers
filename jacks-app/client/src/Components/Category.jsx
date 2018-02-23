@@ -23,7 +23,7 @@ class Category extends Component {
 
  getAllItems() {
    axios({
-     url: "http://localhost:8080/items",
+     url: "/items",
      method: "Get"
    }).then(response => {
      this.setState(

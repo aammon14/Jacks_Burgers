@@ -13,6 +13,7 @@
     "react-scripts": "1.1.1",
     "react-scrollchor": "^4.2.1"
   },
+  "proxy": "http://localhost:8080" ,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

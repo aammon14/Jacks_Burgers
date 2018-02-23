@@ -37,7 +37,7 @@ class Login extends Component {
 
   getUserByUsername() {
     axios({
-      url: `http://localhost:8080/users/login/${this.state.username}`,
+      url: `/users/login/${this.state.username}`,
       method: "get"
     }).then(response => {
       console.log(response.data.password);

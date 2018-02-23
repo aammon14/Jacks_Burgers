@@ -10,7 +10,7 @@ class Order extends Component {
   }
   getOrder() {
     axios({
-      url: "localhost:3000/orders/:id",
+      url: "/orders/:id",
       method: "get"
     }).then(response => {});
   }

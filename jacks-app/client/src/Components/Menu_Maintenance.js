@@ -28,7 +28,7 @@ class Menu_Maintenance extends Component {
     e.preventDefault();
     console.log("bi");
     axios({
-      url: "http://localhost:8080/items",
+      url: "/items",
       method: "post",
       data: this.state
     }).then(response => {

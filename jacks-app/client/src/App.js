@@ -48,7 +48,7 @@ class App extends Component {
   // Item Calls
   getAllItems() {
     axios({
-      url: "http://localhost:8080/items",
+      url: "/items",
       method: "Get"
     }).then(response => {
       this.setState({
@@ -61,7 +61,7 @@ class App extends Component {
   // User Calls
   getAllUser() {
     axios({
-      url: "http://localhost:8080/users",
+      url: "/users",
       method: "get"
     }).then(response => {
       this.setState({
@@ -74,7 +74,7 @@ class App extends Component {
   // Order Calls
   getAllOrders() {
     axios({
-      url: "http://localhost:8080/orders",
+      url: "/orders",
       method: "get"
     }).then(response => {
       this.setState({
@@ -87,7 +87,7 @@ class App extends Component {
   // Checkout Cart Calls
   getCart() {
     axios({
-      url: `http://localhost:8080/cart/${this.state.order}`,
+      url: `/cart/${this.state.order}`,
       method: "get"
     }).then(response => {
       this.setState({
