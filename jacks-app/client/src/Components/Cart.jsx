@@ -52,7 +52,7 @@ class Cart extends Component {
     const total = subtotal + tax;
 
     return (
-      <div>
+      <div className="cart_container">
 
         <form onSubmit={this.handleSubmit}>
           <div className="cart_container">

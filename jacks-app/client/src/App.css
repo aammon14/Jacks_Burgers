@@ -150,32 +150,30 @@
 /*cart container*/
 .cart_container {
   position: fixed;
-  top: 50vh;
+  top: 50px;
   right: 10px;
-  height: 100%;
-  width: 25vw;
-  margin: 15px auto;
+  height: 50%;
+  width: 25%;
   background-color: #f9f9f9;
   border-radius: 2px;
   flex-direction: column;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin-top: 50px;
+  margin-top: 460px;
   /* background-color: red;*/
   overflow: auto;
 }
 .cart_items {
   margin-top: 10px;
   overflow: auto;
-  width: 25%;
-  height: 20vh;
+  width: 100%;
 }
 .cart_item_name {
   text-decoration: none;
   color: black;
 }
 .cart_item_div_content {
-  height: 5vh;
+
   background-color: white;
   margin: 10px auto;
   overflow: auto;
@@ -232,17 +230,17 @@ hr.line {
 /*previous orders styling:*/
 .prevOrderDiv {
   font-family: avenir;
-  padding: 0 5px 5px;
+  padding: 50px 5px 5px;
   background-color: white;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   margin: 5px;
-  background: #03a9f4;
+  background: #f9f9f9;
   text-align: center;
 }
 .prevOrderDiv h1 {
   margin: 5px;
-  color: white;
+  color: black;
 }
 .prevOrderItem {
   font-family: avenir;
@@ -282,17 +280,17 @@ hr.line {
 /*current orders styling:*/
 .currentOrderDiv {
   font-family: avenir;
-  padding: 0 5px 5px;
+  padding: 50px 5px 5px;
   background-color: white;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   margin: 5px;
-  background: #03a9f4;
+  background: #f9f9f9;
   text-align: center;
 }
 .currentOrderDiv h1 {
   margin: 5px;
-  color: white;
+  color: black;
 }
 .currOrderItem {
   font-family: avenir;

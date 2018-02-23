@@ -126,8 +126,8 @@ class App extends Component {
                 return (
                   <div>
                     <div className="items_page">
-                    <Navbar />
-                    <MenuImage />
+                      <Navbar />
+                      <MenuImage />
                       <Category
                         {...props}
                         state={this.state}
