@@ -42,23 +42,27 @@ class UserEdit extends Component {
 
   render() {
     return (
-      <div>
+      <div className='edit'>
         <form onSubmit={this.handleSubmit}>
           <div>
             <h1>Edit your profile</h1>
             <input
+              className="edit_field"
+              placeholder="Edit Your Name"
               type="text"
               value={this.state.username}
               name="username"
               onChange={this.handleChange}
             />
             <input
+              className="edit_password"
+              placeholder="edit Your Password"
               type="text"
               value={this.state.password}
-              name="username"
+              name="password"
               onChange={this.handleChange}
             />
-            <input type="submit" name="submit" value="Update" />
+            <input className='edit_submit' type="submit" name="submit" value="Update" />
           </div>
         </form>
       </div>
