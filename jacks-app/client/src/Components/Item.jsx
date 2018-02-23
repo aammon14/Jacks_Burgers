@@ -1,31 +1,26 @@
 import React, { Component } from "react";
 import axios from "axios";
-
 class Item extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       item: {},
       order: this.props.state.order,
       user: this.props.state.user.id,
       comment: ""
     };
-
     this.createOrder = this.createOrder.bind(this);
     this.getItem = this.getItem.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addItem = this.addItem.bind(this);
   }
-
   componentDidMount() {
     this.getItem();
     if (this.props.state.order === 0) {
       this.createOrder(this.state.user);
     }
   }
-
   createOrder(user_id) {
     console.log("creating order");
     axios({
@@ -38,7 +33,6 @@ class Item extends Component {
       });
     });
   }
-
   getItem() {
     axios({
       url: `http://localhost:8080/items/${this.props.match.params.id}`,
@@ -49,17 +43,14 @@ class Item extends Component {
       });
     });
   }
-
   handleChange(event) {
     this.setState({ comment: event.target.value });
   }
-
   handleSubmit(e) {
     e.preventDefault();
     this.addItem();
     this.props.history.push("/items");
   }
-
   addItem() {
     axios({
       url: `http://localhost:8080/cart/${this.props.match.params.id}`,
@@ -72,7 +63,6 @@ class Item extends Component {
       });
     });
   }
-
   render() {
     return (
       <div className="item_container">
@@ -105,5 +95,4 @@ class Item extends Component {
     );
   }
 }
-
 export default Item;

@@ -161,6 +161,8 @@ class App extends Component {
               path="/items/:id"
               render={props => {
                 return (
+                  <div>
+                   <Navbar />
                   <Item
                     {...props}
                     state={this.state}
@@ -170,6 +172,7 @@ class App extends Component {
                     addItemToCart={this.addItemToCart}
                     getCart={this.getCart}
                   />
+                  </div>
                 );
               }}
             />
@@ -178,11 +181,14 @@ class App extends Component {
               path="/orders"
               render={props => {
                 return (
+                   <div>
+                   <Navbar />
                   <PreviousOrders
                     {...props}
                     orders={this.state.orders}
                     getAllOrders={this.getAllOrders}
                   />
+                  </div>
                 );
               }}
             />
@@ -191,11 +197,14 @@ class App extends Component {
               path="/orders/:id"
               render={props => {
                 return (
+                  <div>
+                   <Navbar />
                   <Order
                     {...props}
                     orders={this.state.orders}
                     getAllOrders={this.getAllItems}
                   />
+                  </div>
                 );
               }}
             />
@@ -204,11 +213,14 @@ class App extends Component {
               path="/orders/:id/edit"
               render={props => {
                 return (
+                  <div>
+                   <Navbar />
                   <EditItem
                     {...props}
                     orders={this.state.orders}
                     getAllOrders={this.getAllItems}
                   />
+                  </div>
                 );
               }}
             />
@@ -217,12 +229,15 @@ class App extends Component {
               path="/users/profile"
               render={props => {
                 return (
+                  <div>
+                   <Navbar />
                   <UserEdit
                     {...props}
                     state={this.state}
                     getAllUser={this.getAllUser}
                     changeUserState={this.changeUserState}
                   />
+                  </div>
                 );
               }}
             />
@@ -231,6 +246,8 @@ class App extends Component {
               path="/Menu_Maintenance"
               render={props => {
                 return (
+                  <div>
+                   <Navbar />
                   <Menu_Maintenance
                     {...props}
                     users={this.state.users}
@@ -238,6 +255,7 @@ class App extends Component {
                     items={this.state.items}
                     getAllItems={this.getAllItems}
                   />
+                  </div>
                 );
               }}
             />
@@ -246,11 +264,14 @@ class App extends Component {
               path="/kitchen"
               render={props => {
                 return (
+                  <div>
+                   <Navbar />
                   <KitchenMode
                     {...props}
                     state={this.state}
                     changeOrderState={this.changeOrderState.bind(this)}
                   />
+                  </div>
                 );
               }}
             />

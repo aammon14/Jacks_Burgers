@@ -44,7 +44,6 @@ class Menu_Maintenance extends Component {
   render() {
     return (
       <div className="main_container">
-        <Link to="/items">Menu</Link>
         <div>
           {this.props.items.map((el, i) => {
             return (
