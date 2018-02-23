@@ -58,7 +58,7 @@ And because I am a frequent customer and have ordered from Jack's Burgers many t
 ------------------------------------------------------------------------
 ### Unsolved Problems and Issues Overcome:
 
--Branch early, branch often.  With this being our first group project of the course, we had to learn quickly and in some cases the hard way on how to mage our project code on github.  We ran into a bit of trouble when we went for too long of a period without merging our branches into the master.  The longer we waited, the more time we spent fixing merge conflicts and backtracking to get everything working again. 
+-Branch early, branch often.  With this being our first group project of the course, we had to learn quickly and in some cases the hard way on how to manage our project code on github.  We ran into a bit of trouble when we went for too long of a period without merging our branches into the master.  The longer we waited, the more time we spent fixing merge conflicts and backtracking to get everything working again. 
 
 -One unsolved problem we have is that we did not get a chance to incorporate user authentication/authorization.  This would come in handy especially when a payment system is integrated into the checkout system of the app. 
 
