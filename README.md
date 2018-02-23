@@ -1,6 +1,6 @@
 ### WDI Jackalope Project 3
 
-# Jack's Burgers App :hamburger: :fries: :beers:
+# Jack's Burgers App :hamburger: :fries: :beer:
 
 ## Jennifer Lora, Cashley Saintilus, Keith Einstein, Andrew Ammon
 
