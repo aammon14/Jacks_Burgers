@@ -13,16 +13,34 @@
   width: 100vw;
   z-index: 3;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
 }
-.nav_links {
-  /* flex:1;*/
-  border: 1px solid green;
-  width: 10vw;
+
+.nav_links{
+ /* flex:1;*/
+  width:12vw;
+  text-decoration: none;
+  line-height: 60px;
+  text-align: center;
+  margin:0 1px 0 1px;
+ font-weight: 600;
+ letter-spacing: 2px;
 }
-.nav_container {
-  width: 40vw;
+.nav_links a{
+  text-decoration: none;
+  color:black;
+}
+.nav_links:hover{
+ box-shadow: 5px 5px 5px 8px rgba(0, 0, 0, 0.3);
+
+}
+.nav_container{
+  width:60vw;
   display: flex;
+}
+.icons{
+  z-index: 4;
+  background-color: black;
 }
 /*Hero image and text*/
 .hero_image {
@@ -188,9 +206,14 @@
   top: 10vh;
   left: 0;
   margin: 10px;
-  width: 25vw;
-  height: 35vh;
-  background-image: url("https://media.gettyimages.com/photos/hot-dog-picture-id168494961?k=6&m=168494961&s=170667a&w=0&h=vdMpD1X0Q4vYqolIMLjbXnrHXrcz2QBmjOGW6HL8bTQ=");
+  width:25vw;
+  height:35vh;
+/*  background-image: url('https://media.gettyimages.com/photos/hot-dog-picture-id168494961?k=6&m=168494961&s=170667a&w=0&h=vdMpD1X0Q4vYqolIMLjbXnrHXrcz2QBmjOGW6HL8bTQ=');
+*/  
+  background-image: url('./Images/other_dog.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
   z-index: 1;
 }
 .featured_image_right {
@@ -198,9 +221,12 @@
   top: 10vh;
   right: 0;
   margin: 10px;
-  width: 25vw;
-  height: 35vh;
-  background-image: url("https://media.gettyimages.com/photos/hot-dog-picture-id168494961?k=6&m=168494961&s=170667a&w=0&h=vdMpD1X0Q4vYqolIMLjbXnrHXrcz2QBmjOGW6HL8bTQ=");
+  width:25vw;
+  height:35vh;
+  background-image: url('./Images/Norfolk.png');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
   z-index: 1;
 }
 /*cart container*/

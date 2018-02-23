@@ -11,7 +11,7 @@ return(
   <div className="nav_links"><Link to='/Sign_up'>Sign up</Link></div>
   <div className="nav_links"><Link to='/orders'>Previous Orders</Link></div>
 	 <div className="nav_links"><Link to='/kitchen'>Kitchen Orders</Link></div>
-  <div className="nav_links"><Link to="/Menu_Maintenance">Menu_Maintenance</Link></div>
+  <div className="nav_links"><Link to="/Menu_Maintenance">Admin</Link></div>
   <div className="nav_links"><Link to="/users/profile">Profile</Link></div>
 
 </div>
