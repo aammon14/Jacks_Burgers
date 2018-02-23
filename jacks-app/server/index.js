@@ -1,4 +1,5 @@
-//Hey
+const path = require('path');
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
@@ -15,7 +16,7 @@ const mustacheExpress = require("mustache-express");
 app.engine("html", mustacheExpress());
 app.set("view engine", "html");
 app.set("views", __dirname + "/views");
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + '/public/build'));
 
 app.use(morgan("dev"));
 
@@ -37,6 +38,10 @@ app.use("/items", itemsRouter);
 
 const cartRouter = require("./controllers/cart.js");
 app.use("/cart", cartRouter);
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/public/build/index.html'));
+});
 
 app.use((err, req, res, next) => {
     console.log("Error encountered:", err);
