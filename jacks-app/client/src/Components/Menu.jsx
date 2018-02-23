@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import { Modal } from "react-bootstrap";
-import Item from "./Item";
 
 class Menu extends Component {
   constructor(props) {
@@ -18,10 +14,10 @@ class Menu extends Component {
   render() {
     return (
       <div>
-         <div className="hero_image">
-            <div className="hero_text">
-              <h1> Jack's Burgers</h1>
-              <h2>Fresher.Tastier.Better.</h2>
+        <div className="hero_image">
+          <div className="hero_text">
+            <h1> Jack's Burgers</h1>
+            <h2>Fresher.Tastier.Better.</h2>
           </div>
         </div>
         <div className="featured_image_left">
@@ -32,7 +28,7 @@ class Menu extends Component {
           <div>
             {this.props.state.categories.map((category, i) => {
               return (
-                <div>
+                <div key={i}>
                   <h1 className="Menu_title" id={category}>
                     {category}
                   </h1>
@@ -42,8 +38,7 @@ class Menu extends Component {
                         <div className="item_div" key={i}>
                           <Link
                             className="item_div_content"
-                            to={`/items/${items.id}`}
-                          >
+                            to={`/items/${items.id}`}>
                             <h1 className="item_name">{items.name}</h1>
                             <p className="item_description">
                               {items.description}

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
 import axios from "axios";
-import Menu from "./Menu";
 import Scrollchor from 'react-scrollchor';
 
 class Category extends Component {
@@ -53,10 +51,9 @@ class Category extends Component {
         <h2 className="category_Menu_title"> Categories</h2>
         {this.state.categories.map((el, i) => {
           return (
-
-            <Scrollchor to={`#${el}`}>
+            <Scrollchor key={i} to={`#${el}`}>
             <div className="category_item">
-              <h1 key={i} className="category_title">
+              <h1 className="category_title">
                 {el}
               </h1>
             </div>

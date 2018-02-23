@@ -12,10 +12,9 @@ import Menu_Maintenance from "./Components/Menu_Maintenance";
 import KitchenMode from "./Components/KitchenMode";
 import Category from "./Components/Category";
 import Navbar from "./Components/Navbar";
-
 import axios from "axios";
 import "./App.css";
-import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
