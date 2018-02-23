@@ -16,11 +16,17 @@ To build Jack's Burgers, a dine-in restaurant ordering app, we used a react fram
 ### Approach:
 
 -Built out file structure on Friday
+
 -Zoom chatted all weekend and built out back end
+
 -CRU app by Tuesday
+
 -Split up front end components
+
 -Split up css
+
 -Full CRUD Thursday night
+
 -Presentation prep and deploy Friday
 
 ------------------------------------------------------------------------
@@ -31,7 +37,7 @@ To initialize our app, cd into the server directory in your terminal, run `npm i
 ------------------------------------------------------------------------
 ### Entity Relationship Diagrams:
 
-[Project ERD](./jacks-app/client/src/images/ERD.png)
+[Project ERD](./jacks-app/client/src/Images/ERD.png)
 
 ------------------------------------------------------------------------
 ### User Stories
@@ -47,7 +53,7 @@ And because I am a frequent customer and have ordered from Jack's Burgers many t
 ------------------------------------------------------------------------
 ### Wireframe
 
-[Project Wireframe](./jacks-app/client/src/images/Artboard.png)
+[Project Wireframe](./jacks-app/client/src/Images/Artboard.png)
 
 ------------------------------------------------------------------------
 ### Unsoleved Problems and Issues Overcome:
