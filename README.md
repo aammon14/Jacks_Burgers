@@ -8,6 +8,7 @@
 ### Techonologies used:
 
 Frameworks: HTML, CSS, Javascript, Express, React
+
 NPM Packages: Axios, express, react, morgan, body-parser, cors, react-router-dom, react-scrollchor
 
 To build Jack's Burgers, a dine-in restaurant ordering app, we used a react framework for the user-facing front-end combined with a back-end built with express.  Additionally our app is supported by numerous npm packages including, but not limited to, axios, cors, react-router-dom and react-scrollchor.  Axios was used on the front-end to make HTTP requests to our local API on the backend in order to create, read, update, and delete from our data base. CORS, or cross-origin resource sharing, is an important piece of middleware that supports the transfer of data between web browsers and servers.  React-scrollchor is a nifty little package that makes scrolling to #hash links smooth which was implemented in our app to scroll to different locations on the menu when a specific category is clicked on. 
