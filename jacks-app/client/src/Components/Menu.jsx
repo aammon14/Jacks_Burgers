@@ -14,12 +14,7 @@ class Menu extends Component {
   render() {
     return (
       <div>
-        <div className="hero_image">
-          <div className="hero_text">
-            <h1> Jack's Burgers</h1>
-            <h2>Fresher.Tastier.Better.</h2>
-          </div>
-        </div>
+        
         <div className="featured_image_left">
         </div>
         <div className="featured_image_right">

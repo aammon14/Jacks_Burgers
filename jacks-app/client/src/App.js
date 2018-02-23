@@ -12,6 +12,7 @@ import Menu_Maintenance from "./Components/Menu_Maintenance";
 import KitchenMode from "./Components/KitchenMode";
 import Category from "./Components/Category";
 import Navbar from "./Components/Navbar";
+import MenuImage from './Components/MenuImage';
 import axios from "axios";
 import "./App.css";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
@@ -126,6 +127,7 @@ class App extends Component {
                   <div>
                     <div className="items_page">
                     <Navbar />
+                    <MenuImage />
                       <Category
                         {...props}
                         state={this.state}
