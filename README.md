@@ -15,19 +15,14 @@ To build Jack's Burgers, a dine-in restaurant ordering app, we used a react fram
 ------------------------------------------------------------------------
 ### Approach:
 
--Built out file structure on Friday
+Once we agreed on one project idea to pursue, we began by writing out a proposal for our project. In the proposal we defined our goals and what the app shouldbe able to do. Drawing out wireframes (see link below) ensured that we all understood how the app would work and get a sense for what it should look like.  We also drew up the entity relationship diagram to know exactly what data our database was going store and how the tables related to one another.
 
--Zoom chatted all weekend and built out back end
+We than began building out the basic file structure for the app. We split our app into two main folders, a client and a server folder.  Within the server folder we set up our models, controllers, and db (database).  We have set up models and controllers for the cart, items, orders, and users.  We divided those models and controllers up equally among the four of us and spent the weekend building out the backend.  Working together remotely on Zoom we were able to chat and share each other's screens so we could quickly diagnos and debug any issues that anyone was having. By the end of the weekend we were able to get all of our backend routes working as we were able to confirm so by testing the routes in Postman (with the exception of a delete-route, which at that point we had not firmly decided what in our app we would be deleting). At this point we had a backe-end 'CRU' app.
 
--CRU app by Tuesday
+After the backend was up and running, we began tackling the user-facing front-end of the app.  We started together by setting up the basic structure of our app.js file, and then individually started to work on the different components of our app.  By the middle of the week we had made significant progress building up the front end and could see the app coming together.  We ran into a few problems by spending a significant amount of time on our own branches without merging to the master.  Our app was essentially working in pieces on each of our branches.  Once we merged we ran into a lot of conflicts and ended up having to backtrack a little. 
 
--Split up front end components
+After fixing our conflicts and getting back on track we added a delete method to our user edit page making our app full CRUD.  At that point all that was left was fixing up the CSS and making it look as nice as possible.  
 
--Split up css
-
--Full CRUD Thursday night
-
--Presentation prep and deploy Friday
 
 ------------------------------------------------------------------------
 ### Installation instructions for any dependencies:
