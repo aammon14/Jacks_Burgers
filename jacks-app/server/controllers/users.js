@@ -24,4 +24,8 @@ router.put("/edit/:id", usersModel.update, (req, res, next) => {
     res.json(res.locals.updatedUserData);
 });
 
+router.delete("/:id", usersModel.destroy, (req, res, next) => {
+    res.json(res.locals.rowsDeleted);
+});
+
 module.exports = router;

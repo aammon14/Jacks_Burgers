@@ -38,6 +38,7 @@ class Login extends Component {
       url: `http://localhost:8080/users/login/${this.state.username}`,
       method: "get"
     }).then(response => {
+      console.log(response.data.password);
       this.setState(
         {
           user: response.data,
@@ -55,7 +56,7 @@ class Login extends Component {
       this.props.history.push("/items");
     } else {
       console.log("no match");
-      this.props.history.push("/Login");
+      this.props.history.push("/Sign_In");
     }
   }
 

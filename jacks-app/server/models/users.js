@@ -65,7 +65,7 @@ usersModel.update = (req, res, next) => {
             [req.body.username, req.body.password, req.body.user]
         )
         .then(data => {
-            console.log(data);
+            console.log(data.rowCount);
             res.locals.updatedUserData = data;
             next();
         })
@@ -77,8 +77,9 @@ usersModel.update = (req, res, next) => {
 
 usersModel.destroy = (req, res, next) => {
     db
-        .one("DELETE FROM users WHERE id = $1", [req.params.id])
-        .then(() => {
+        .one("DELETE FROM users WHERE id = $1 RETURNING *", [req.params.id])
+        .then(data => {
+            res.locals.rowsDeleted = data.rowCount;
             next();
         })
         .catch(error => {

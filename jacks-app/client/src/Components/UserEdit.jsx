@@ -14,6 +14,7 @@ class UserEdit extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateUser = this.updateUser.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   handleChange(event) {
@@ -40,6 +41,16 @@ class UserEdit extends Component {
     });
   }
 
+  delete() {
+    axios({
+      url: `http://localhost:8080/users/${this.state.user}`,
+      method: "delete"
+    }).then(() => {
+      console.log("user deleted");
+      this.props.history.push("/");
+    });
+  }
+
   render() {
     return (
       <div>
@@ -55,12 +66,13 @@ class UserEdit extends Component {
             <input
               type="text"
               value={this.state.password}
-              name="username"
+              name="password"
               onChange={this.handleChange}
             />
             <input type="submit" name="submit" value="Update" />
           </div>
         </form>
+        <button onClick={this.delete}>Delete Account</button>
       </div>
     );
   }

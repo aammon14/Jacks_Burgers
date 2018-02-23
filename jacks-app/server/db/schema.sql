@@ -11,7 +11,8 @@ CREATE TABLE users (
 CREATE TABLE orders (
     id BIGSERIAL PRIMARY KEY,
     user_id SERIAL,
-    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+    ON DELETE CASCADE,
     status VARCHAR(255)
 );
 
@@ -27,7 +28,8 @@ CREATE TABLE items (
 CREATE TABLE orders_items (
     id BIGSERIAL PRIMARY KEY,
     order_id SERIAL,
-    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (order_id) REFERENCES orders(id)
+    ON DELETE CASCADE,
     item_id SERIAL,
     FOREIGN KEY (item_id) REFERENCES items(id),
     comment VARCHAR(255)
