@@ -293,18 +293,13 @@ hr.line{
   background: #03a9f4;
   text-align: center;
 }
-.prevOrderDiv  h1 {
+.prevOrderDiv h1 {
   margin: 5px;
   color: white;
 }
 .prevOrderItem {
-  padding: 0 5px 5px;
-}
-.prevOrderItem {
   font-family: avenir;
   padding: 0 5px 5px;
-  width: 600px;
-  height: 125px;
   background-color: white;
   border-radius: 5px;
   display: flex;
@@ -316,7 +311,7 @@ hr.line{
 }
 .prevOrderText {
   width: 100%;
-  padding: 5px;
+  padding: 5px 10px;
 }
 .prevOrderText p {
   margin: 0;
