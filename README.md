@@ -8,9 +8,9 @@
 ### Techonologies used:
 
 Frameworks: HTML, CSS, Javascript, Express, React
-NPM Packages: Axios, express, react, morgan, bcrypt, mustache-express, passport, passport-local, body-parser, cors, cookie-parser, env, react, react-router-dom, react-scrollchor, react-bootstrap
-<!-- I don't think we used bcrypt, passport, passport-local, env or cookie-parser...or bootstrap? -->
-To build Jack's Burgers, a dine-in restaurant ordering app, we used a react framework for the user-facing front-end combined with a back-end built with express.  Additionally our app is supported by numerous npm packages including, but not limited to, axios, cors, react-router-dom and react-scrollchor.  Axios was used on the front-end to make HTTP requests to our local API on the backend in order to create, read, update, and delete from our data base. CORS, or cross-origin resource sharing, is an important piece of middleware that supports the transfer of data between web browsers and servers.  React-scrollchor is a nifty little package that makes scrolling to #hash links smooth which was implemented in our app to scroll to different locations on the menu when a specific category was clicked on. 
+NPM Packages: Axios, express, react, morgan, body-parser, cors, react-router-dom, react-scrollchor
+
+To build Jack's Burgers, a dine-in restaurant ordering app, we used a react framework for the user-facing front-end combined with a back-end built with express.  Additionally our app is supported by numerous npm packages including, but not limited to, axios, cors, react-router-dom and react-scrollchor.  Axios was used on the front-end to make HTTP requests to our local API on the backend in order to create, read, update, and delete from our data base. CORS, or cross-origin resource sharing, is an important piece of middleware that supports the transfer of data between web browsers and servers.  React-scrollchor is a nifty little package that makes scrolling to #hash links smooth which was implemented in our app to scroll to different locations on the menu when a specific category is clicked on. 
 
 ------------------------------------------------------------------------
 ### Approach:
@@ -56,7 +56,7 @@ And because I am a frequent customer and have ordered from Jack's Burgers many t
 [Project Wireframe](./jacks-app/client/src/Images/Artboard.png)
 
 ------------------------------------------------------------------------
-### Unsoleved Problems and Issues Overcome:
+### Unsolved Problems and Issues Overcome:
 
 -Branch early, branch often.  With this being our first group project of the course, we had to learn quickly and in some cases the hard way on how to mage our project code on github.  We ran into a bit of trouble when we went for too long of a period without merging our branches into the master.  The longer we waited, the more time we spent fixing merge conflicts and backtracking to get everything working again. 
 
