@@ -44,22 +44,28 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Sign Up</h1>
-        <form onSubmit={this.handleSubmit}>
+      <div className ="signUp">
+          {/*<h1 className="sign_up_title">Sign Up</h1>*/}
+        <form className="sign_up_form" onSubmit={this.handleSubmit}>
+           
           <input
+            className="sign_up_field"
+            placeholder="User Name"
             type="text"
             name="username"
             onChange={this.handleChange}
             value={this.state.username}
           />
-          <input
+            
+            <input
+            className="sign_up_password_field"
             type="text"
             name="password"
+            placeholder="Password"
             onChange={this.handleChange}
             value={this.state.password}
           />
-          <input type="submit" name="submit" value="Sign Up" />
+          <input className="sign_up_submit" type="submit" name="submit" value="Sign Up" />
         </form>
       </div>
     );
