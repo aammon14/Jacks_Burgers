@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {Link } from "react-router-dom";
+
 
 class Signup extends Component {
   constructor(props) {
@@ -67,6 +69,9 @@ class Signup extends Component {
           />
           <input className="sign_up_submit" type="submit" name="submit" value="Sign Up" />
         </form>
+        <p className="register">
+        <Link to="/Sign_in" className="link"> Sign In</Link> to your account?
+        </p>
       </div>
     );
   }

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {Link } from "react-router-dom";
+
 
 class UserEdit extends Component {
   constructor(props) {
@@ -56,7 +58,7 @@ class UserEdit extends Component {
       <div className='edit'>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <h1>Edit your profile</h1>
+            <h1 className='edit_title'>Edit your profile</h1>
             <input
               className="edit_field"
               placeholder="Edit Your Name"
@@ -76,7 +78,7 @@ class UserEdit extends Component {
             <input className='edit_submit' type="submit" name="submit" value="Update" />
           </div>
         </form>
-        <button onClick={this.delete}>Delete Account</button>
+        <button className="delete"  onClick={this.delete}>Delete Account</button>
       </div>
     );
   }
