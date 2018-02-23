@@ -36,7 +36,7 @@ To initialize our app, cd into the server directory in your terminal, run `npm i
 [Project ERD](./jacks-app/client/src/Images/ERD.png)
 
 ------------------------------------------------------------------------
-### User Stories
+### User Stories:
 
 Jack's Burgers App, a user story...
 
@@ -47,7 +47,7 @@ When I see something I like, I can add it to my cart and if I need an item custo
 And because I am a frequent customer and have ordered from Jack's Burgers many times I should be able to see my previous orders.
 
 ------------------------------------------------------------------------
-### Wireframe
+### Wireframe:
 
 [Project Wireframe](./jacks-app/client/src/Images/Artboard.png)
 
