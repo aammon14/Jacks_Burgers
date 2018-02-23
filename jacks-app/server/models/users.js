@@ -2,7 +2,6 @@ const db = require("../db/setup.js");
 const usersModel = {};
 
 usersModel.allUsers = (req, res, next) => {
-    console.log("allusers");
     db
         .manyOrNone("SELECT * FROM users")
         .then(data => {

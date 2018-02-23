@@ -28,7 +28,6 @@ itemsModel.findById = (req, res, next) => {
 };
 
 itemsModel.create = (req, res, next) => {
-    console.log(req.body);
     db
         .one(
             "INSERT INTO items (category, name, price, description) VALUES ($1, $2, $3, $4) RETURNING *;",

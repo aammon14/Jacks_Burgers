@@ -75,18 +75,18 @@ ordersModel.getAllCurrentOrdersItems = (req, res, next) => {
        });
 };
 
-ordersModel.findById = (req, res, next) => {
-  db
-    .one("SELECT * FROM orders WHERE id = $1", [req.params.id])
-    .then(data => {
-      res.locals.orderData = data;
-      next();
-    })
-    .catch(error => {
-      console.log("error encountered in ordersModel.findById:", error);
-      next(error);
-    });
-};
+// ordersModel.findById = (req, res, next) => {
+//   db
+//     .one("SELECT * FROM orders WHERE id = $1", [req.params.id])
+//     .then(data => {
+//       res.locals.orderData = data;
+//       next();
+//     })
+//     .catch(error => {
+//       console.log("error encountered in ordersModel.findById:", error);
+//       next(error);
+//     });
+// };
 
 ordersModel.create = (req, res, next) => {
   db
@@ -105,9 +105,6 @@ ordersModel.create = (req, res, next) => {
 };
 
 ordersModel.update = (req, res, next) => {
-  console.log('in ordersModel.update, req.body.order: ', req.body.order);
-  console.log('in ordersModel.update, req.body.user: ', req.body.user);
-  console.log('in ordersModel.update, req.body.status: ', req.body.status);
   db
     .manyOrNone(
       "UPDATE orders SET status = $1 WHERE id = $2 AND user_id = $3",

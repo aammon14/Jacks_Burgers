@@ -30,9 +30,9 @@ router.get(
     }
 );
 
-router.get("/:id", ordersModel.findById, (req, res, next) => {
-    res.json(res.locals.orderData);
-});
+// router.get("/:id", ordersModel.findById, (req, res, next) => {
+//     res.json(res.locals.orderData);
+// });
 
 router.post("/:user_id", ordersModel.create, (req, res, next) => {
     res.json(res.locals.newOrderId);
