@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon -e html,css,js index.js",
-    "build": "cd client/ && npm run build && mv -f ./build ../public",
+    "build": "cd ../client/ && npm run build && mv -f ./build ../server/public",
     "setup": "mkdir public"
   },
   "repository": {
